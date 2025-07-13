@@ -1,148 +1,186 @@
-/* ------------------ Global Reset ------------------ */
+/* Reset + Base */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: #fffdfc;
-  color: #1a1a1a;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fcfcfc;
+  color: #222;
   line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
 }
 
-/* ------------------ Header ------------------ */
+/* Header */
 header {
-  background-color: #fff;
-  padding: 20px 5%;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(8px);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 1.2rem 2rem;
+  z-index: 1000;
+  border-bottom: 1px solid #eee;
 }
 
-header .logo {
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #d6a463; /* Aura Gold */
-  letter-spacing: 1px;
+.logo {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: 0.5px;
 }
 
-header nav a {
-  color: #333;
+nav a {
+  margin-left: 1.5rem;
   text-decoration: none;
-  margin-left: 20px;
-  font-size: 1rem;
+  color: #333;
+  font-weight: 500;
   transition: color 0.3s ease;
 }
 
-header nav a:hover {
-  color: #d6a463;
+nav a:hover {
+  color: #000;
 }
 
-/* ------------------ Hero Section ------------------ */
-.hero {
-  background: linear-gradient(to right, #fff9f5, #fcefe6);
-  padding: 100px 5%;
+/* Hero Section */
+.hero-full {
+  height: 100vh;
+  background: linear-gradient(to bottom, #fff, #f9f9f9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
   text-align: center;
+  margin-top: 80px;
 }
 
-.hero h1 {
-  font-size: 3rem;
-  color: #333;
-  margin-bottom: 20px;
+.hero-content h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1rem;
+  color: #111;
+  font-weight: 700;
 }
 
-.hero p {
+.hero-content p {
   font-size: 1.1rem;
   color: #555;
   max-width: 600px;
-  margin: 0 auto 30px;
+  margin: 0 auto 2rem;
 }
 
-.hero .btn {
-  background-color: #d6a463;
+.btn-light {
+  padding: 0.8rem 2rem;
+  border: 1px solid #111;
+  background: transparent;
+  color: #111;
+  text-decoration: none;
+  font-weight: 500;
+  border-radius: 30px;
+  transition: all 0.3s ease;
+}
+
+.btn-light:hover {
+  background: #111;
   color: #fff;
-  padding: 14px 28px;
-  border: none;
-  border-radius: 50px;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
-.hero .btn:hover {
-  background-color: #b98c4f;
+/* Section Styles */
+section {
+  padding: 4rem 2rem;
+  max-width: 1100px;
+  margin: auto;
+  text-align: center;
 }
 
-/* ------------------ Product Section ------------------ */
-.products {
-  padding: 60px 5%;
-  background-color: #fff;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
+.section-light {
+  background-color: #fefefe;
 }
 
-.product-card {
-  background-color: #fdf9f5;
-  border-radius: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
-  overflow: hidden;
+.section-dark {
+  background-color: #f5f5f5;
+}
+
+.section-center h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.section-center .btn-dark {
+  margin-top: 1.5rem;
+  padding: 0.8rem 2rem;
+  background-color: #111;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 30px;
+  transition: background 0.3s ease;
+}
+
+.section-center .btn-dark:hover {
+  background-color: #000;
+}
+
+/* Product Preview Cards */
+.product-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.preview-card {
+  flex: 1 1 280px;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 14px;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.03);
   transition: transform 0.3s ease;
 }
 
-.product-card:hover {
+.preview-card:hover {
   transform: translateY(-5px);
 }
 
-.product-card img {
-  width: 100%;
-  height: auto;
+/* Fade-in Animation */
+.fade-in {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  transition: all 1s ease;
 }
 
-.product-card .details {
-  padding: 20px;
+.section-light,
+.section-dark,
+.hero-full,
+.preview-card,
+.section-center {
+  opacity: 0;
+  transform: translateY(40px);
 }
 
-.product-card .details h3 {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 10px;
-}
-
-.product-card .details p {
-  font-size: 0.95rem;
-  color: #777;
-}
-
-.product-card .details .price {
-  margin-top: 15px;
-  color: #d6a463;
-  font-weight: bold;
-}
-
-/* ------------------ Footer ------------------ */
+/* Footer */
 footer {
-  background-color: #faf5f0;
-  padding: 30px 5%;
+  padding: 2rem;
+  background: #fff;
+  color: #666;
   text-align: center;
-  color: #555;
   font-size: 0.9rem;
-  margin-top: 60px;
+  border-top: 1px solid #eee;
 }
 
 footer a {
-  color: #d6a463;
   text-decoration: none;
-  margin: 0 10px;
+  color: #444;
+  margin: 0 0.5rem;
 }
 
-footer a:hover {
-  text-decoration: underline;
-}
-
+/* WhatsApp Floating Button */
 .whatsapp-float {
   position: fixed;
   bottom: 20px;
@@ -151,8 +189,8 @@ footer a:hover {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   background-color: #25d366;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -168,16 +206,32 @@ footer a:hover {
   transform: scale(1.05);
 }
 
-/* Fade-in Animation */
-.fade-in {
-  opacity: 1;
-  transform: translateY(0);
-  transition: all 1s ease;
-}
+/* Responsive */
+@media screen and (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
 
-.product-card,
-.hero,
-.details {
-  opacity: 0;
-  transform: translateY(30px);
+  nav {
+    margin-top: 0.5rem;
+  }
+
+  nav a {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+
+  .product-preview {
+    flex-direction: column;
+  }
+
+  .preview-card {
+    width: 100%;
+  }
 }
