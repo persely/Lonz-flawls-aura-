@@ -6,345 +6,117 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Lonz Flawless Aura: South African luxury skincare, digital elegance, and emotional sanctuary.">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Playfair+Display:700&display=swap">
+  <link rel="stylesheet" href="style.css">
   <style>
-    :root {
-      --aura-bg: linear-gradient(120deg, #f5e9ef 0%, #f9f6f3 100%);
-      --accent: #b49582;
-      --glow: rgba(180,149,130,0.25);
-      --velvet: #fff7f2;
-      --text-main: #2d2320;
-      --text-soft: #7a6a5b;
-      --shadow: 0 4px 32px var(--glow);
-      --border-radius: 24px;
-      --transition: cubic-bezier(.8, .2, .2, 1);
-    }
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: 'Montserrat', 'Playfair Display', serif;
-      background: var(--aura-bg);
-      color: var(--text-main);
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-    body {
-      opacity: 0;
-      transition: opacity 1.3s var(--transition);
-    }
-    body.aura-loaded {
-      opacity: 1;
-    }
-    .preloader {
-      position: fixed;
-      z-index: 9999;
-      top: 0; left: 0;
-      width: 100vw; height: 100vh;
-      background: var(--velvet);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: fadeOutPreloader 1.6s ease-in-out 1s forwards;
-    }
-    .preloader svg {
-      width: 96px; height: 96px;
-      filter: drop-shadow(0 0 24px var(--accent));
-      animation: auraPulse 1.2s infinite alternate;
-    }
-    @keyframes auraPulse {
-      from { transform: scale(1); opacity: 1;}
-      to { transform: scale(1.08); opacity: .84;}
-    }
-    @keyframes fadeOutPreloader {
-      to { opacity: 0; pointer-events: none; }
-    }
-    header {
-      padding: 48px 0 24px 0;
-      text-align: center;
-      background: transparent;
-    }
-    header h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 2.8rem;
-      letter-spacing: 1.2px;
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 12px;
-      text-shadow: 0 2px 24px var(--glow);
-      transition: text-shadow .7s var(--transition);
-    }
-    header p {
-      font-size: 1.2rem;
-      color: var(--text-soft);
-      margin: 0 auto 8px auto;
-      max-width: 400px;
-      font-style: italic;
-      letter-spacing: .3px;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 36px;
-      margin-bottom: 24px;
-    }
-    nav a {
+    /* Glassmorphism overlays */
+    .glass {
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(22px) saturate(120%);
+      box-shadow: 0 8px 48px 0 rgba(180,149,130,0.15), 0 1px 0 #fff3;
+      border-radius: 28px;
+      border: 1px solid rgba(180,149,130,0.09);
       position: relative;
-      font-size: 1.1rem;
-      color: var(--accent);
-      text-decoration: none;
-      padding: 6px 20px;
+    }
+    .glass-btn, nav a, .cta a, .cta button, .product-card, .contact-form {
+      background: rgba(255,255,255,0.33);
+      backdrop-filter: blur(15px) saturate(120%);
+      box-shadow: 0 2px 22px rgba(180,149,130,0.10);
       border-radius: 18px;
-      transition: background .3s, box-shadow .3s;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-    }
-    nav a svg {
-      width: 18px; height: 18px;
-      vertical-align: middle;
-      filter: drop-shadow(0 0 6px var(--glow));
-      transition: filter .4s;
-    }
-    nav a:hover, nav a:focus {
-      background: var(--velvet);
-      box-shadow: var(--shadow);
-      outline: none;
-    }
-    nav a:hover svg, nav a:focus svg {
-      filter: drop-shadow(0 0 14px var(--accent));
-    }
-    .section {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 36px 18px;
-      border-radius: var(--border-radius);
-      box-shadow: 0 2px 32px var(--glow);
-      background: rgba(255,255,255,0.85);
-      position: relative;
-      margin-bottom: 36px;
-      transition: box-shadow .4s var(--transition);
-    }
-    .section:hover {
-      box-shadow: 0 6px 48px var(--accent);
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-      gap: 32px;
-      margin-top: 30px;
-    }
-    .product-card {
-      background: var(--velvet);
-      border-radius: var(--border-radius);
-      box-shadow: 0 2px 24px var(--glow);
-      padding: 24px 18px;
-      text-align: center;
-      transition: box-shadow .3s, transform .3s;
+      border: 1px solid rgba(180,149,130,0.07);
       position: relative;
       overflow: hidden;
-      cursor: pointer;
+    }
+    nav a, .cta a, .cta button, .glass-btn {
+      transition: box-shadow .3s, transform .2s, background .3s;
+    }
+    nav a:hover, nav a:focus, .cta a:active, .cta button:active, .glass-btn:active {
+      background: rgba(255,255,255,0.55);
+      box-shadow: 0 0 44px 0 #b49582cc, 0 0 8px #fff2;
+      transform: scale(1.04);
     }
     .product-card:hover {
-      box-shadow: 0 0 42px var(--accent);
-      transform: translateY(-6px) scale(1.015);
+      background: rgba(255,255,255,0.66);
+      box-shadow: 0 0 54px 0 #b49582, 0 0 14px #fff2;
+      transform: scale(1.025);
     }
-    .product-card .product-icon {
-      margin-bottom: 18px;
-      filter: drop-shadow(0 0 12px var(--accent));
+    /* Minimalist aura icon highlight */
+    .product-icon, nav a svg, .cta a svg, .cta button svg {
+      filter: drop-shadow(0 0 9px #b4958255);
+      transition: filter .18s;
     }
-    .product-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.35rem;
-      color: var(--accent);
-      margin: 0 0 6px 0;
-      text-shadow: 0 2px 18px var(--glow);
+    nav a:hover svg, .product-card:hover .product-icon {
+      filter: drop-shadow(0 0 18px #b49582cc);
     }
-    .product-card .line {
-      font-size: 0.96rem;
-      color: #bb8d5c;
-      font-weight: 700;
-      margin-bottom: 7px;
-    }
-    .product-card .purpose {
-      color: var(--text-soft);
-      font-size: 1rem;
-      margin-bottom: 5px;
-    }
-    .product-card .emotion {
-      font-style: italic;
-      color: #6c5746;
-      font-size: 0.99rem;
-    }
-    .cta {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 16px;
-      margin-top: 22px;
-    }
-    .cta button, .cta a {
-      background: var(--accent);
-      color: #fff;
-      font-size: 1.1rem;
-      border: none;
-      border-radius: 18px;
-      padding: 12px 32px;
-      box-shadow: 0 2px 18px var(--glow);
-      cursor: pointer;
-      transition: background .25s, box-shadow .25s, transform .2s;
-      outline: none;
-    }
-    .cta button:active, .cta a:active {
-      background: #bb8d5c;
-      box-shadow: 0 0 24px var(--accent);
-      transform: scale(1.03);
-    }
-    /* WhatsApp floating button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 34px;
-      right: 22px;
-      z-index: 999;
-      background: #25D366;
-      color: #fff;
+    /* Ripple effect for buttons/cards */
+    .glass-btn:active::after, .product-card:active::after, .cta a:active::after, .cta button:active::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, #b4958240 0%, transparent 70%);
       border-radius: 50%;
-      width: 62px; height: 62px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: 0 2px 24px #25d36688;
-      animation: popupGlow 1.8s infinite alternate;
-      transition: box-shadow .4s;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: .6;
+      z-index: 2;
+      animation: rippleAura .6s ease-out;
     }
-    .whatsapp-float:hover {
-      box-shadow: 0 0 36px #25d366cc;
-      transform: scale(1.07);
+    @keyframes rippleAura {
+      from { opacity: .7; width: 0; height: 0;}
+      to { opacity: 0; width: 160px; height: 160px;}
     }
-    .whatsapp-float svg {
-      width: 34px; height: 34px;
+    /* Ambient Rainfall Canvas */
+    #rainfall-bg {
+      position: fixed;
+      z-index: 0;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      background: transparent;
     }
-    @keyframes popupGlow {
-      from { box-shadow: 0 2px 24px #25d36688; }
-      to { box-shadow: 0 2px 36px #25d366cc; }
-    }
-    /* Contact form */
-    .contact-form {
-      max-width: 440px;
-      margin: 0 auto;
-      background: var(--velvet);
-      padding: 26px 18px;
-      border-radius: var(--border-radius);
-      box-shadow: 0 2px 18px var(--glow);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: box-shadow .3s;
-    }
-    .contact-form input, .contact-form textarea {
-      width: 100%;
-      border-radius: 12px;
-      border: 1px solid #e9d7c8;
-      padding: 11px;
-      font-size: 1rem;
-      background: #f7f0ed;
-      margin-bottom: 7px;
-      transition: border .2s, box-shadow .2s;
-    }
-    .contact-form input:focus, .contact-form textarea:focus {
-      border: 1.5px solid var(--accent);
-      box-shadow: 0 0 9px var(--accent);
-      outline: none;
-    }
-    .contact-form button {
-      background: var(--accent);
-      color: #fff;
-      border: none;
-      border-radius: 14px;
-      font-size: 1.05rem;
-      padding: 11px 22px;
-      box-shadow: 0 2px 12px var(--glow);
-      cursor: pointer;
-      transition: background .22s, box-shadow .22s, transform .16s;
-    }
-    .contact-form button:active {
-      background: #bb8d5c;
-      transform: scale(1.03);
-    }
-    .form-feedback {
-      font-size: 0.97rem;
-      color: var(--accent);
-      text-align: center;
-      margin-top: 8px;
-      opacity: 0;
-      transition: opacity .7s;
-    }
-    .form-feedback.visible {
-      opacity: 1;
-    }
-    /* Motion scroll reveal */
-    .scroll-reveal {
-      opacity: 0;
-      transform: translateY(36px) scale(.97);
-      transition: opacity .7s var(--transition), transform .7s var(--transition);
-    }
-    .scroll-reveal.visible {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    @media (max-width: 650px) {
-      header h1 { font-size: 2rem; }
-      .section { padding: 18px 7px; }
-      .products { grid-template-columns: 1fr; }
-      nav { gap: 16px; }
-    }
+    /* Scroll reveal blur-in */
+    .scroll-reveal { opacity: 0; transform: translateY(36px) scale(.97) blur(8px); transition: opacity .7s cubic-bezier(.8,.2,.2,1), transform .7s cubic-bezier(.8,.2,.2,1), filter .7s;}
+    .scroll-reveal.visible { opacity: 1; transform: translateY(0) scale(1) blur(0); }
   </style>
 </head>
 <body>
-  <div class="preloader">
-    <!-- Aura loader SVG -->
+  <canvas id="rainfall-bg"></canvas>
+  <div class="preloader glass">
     <svg viewBox="0 0 96 96">
       <circle cx="48" cy="48" r="38" fill="none" stroke="#b49582" stroke-width="10" stroke-opacity="0.4"/>
       <circle cx="48" cy="48" r="28" fill="none" stroke="#b49582" stroke-width="7" />
       <circle cx="48" cy="48" r="12" fill="#fff7f2" stroke="#b49582" stroke-width="3" />
     </svg>
   </div>
-
-  <header>
+  <header class="glass">
     <h1>Lonz Flawless Aura</h1>
-    <p>South African luxury skincare — a velvet ritual for your story. Feel first, code second, story always.</p>
-    <nav>
+    <p>South African luxury skincare — a velvet ritual for your story.<br>Feel first, code second, story always.</p>
+    <nav class="glass">
       <a href="#products" aria-label="Discover Products">
-        <!-- Diamond icon SVG -->
         <svg viewBox="0 0 24 24"><path fill="#b49582" d="M12 2L2 8l10 14 10-14-10-6z"/></svg>
         Products
       </a>
       <a href="#about" aria-label="Brand Story">
-        <!-- Book icon SVG -->
         <svg viewBox="0 0 24 24"><path fill="#b49582" d="M4 19.5V5a2 2 0 012-2h9v17H6a2 2 0 01-2-2z"/><path fill="#b49582" d="M20 19.5V5a2 2 0 00-2-2h-1v17h1a2 2 0 002-2z"/></svg>
         Our Story
       </a>
       <a href="#contact" aria-label="Contact Us">
-        <!-- Envelope icon SVG -->
         <svg viewBox="0 0 24 24"><path fill="#b49582" d="M4 4h16v16H4V4zm8 8l8-5v10l-8 5-8-5V7l8 5z"/></svg>
         Contact
       </a>
     </nav>
   </header>
-
-  <section class="section scroll-reveal" id="about">
+  <section class="section scroll-reveal glass" id="about">
     <h2>Our Ritual</h2>
     <p>
-      Lonz Flawless Aura is not just skincare — it's a sanctuary. Each drop is a velvet rebellion, crafted with South African precision and global elegance. Our story is rooted in feeling: we believe beauty is an emotion, not a standard. Welcome to your digital sanctuary.
+      Lonz Flawless Aura is not just skincare — it's a sanctuary. Each drop is a velvet rebellion, crafted with South African precision and global elegance. Our story is rooted in feeling: we believe in presence before product, ritual before routine, and the power of rare, soft moments.
     </p>
   </section>
-
-  <section class="section scroll-reveal" id="products">
+  <section class="section scroll-reveal glass" id="products">
     <h2>Luxury Collection</h2>
     <div class="products">
-      <!-- Example product cards -->
-      <div class="product-card">
+      <div class="product-card glass">
         <div class="product-icon">
-          <!-- Glow cream SVG -->
           <svg viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="14" ry="8" fill="#fff7f2" stroke="#b49582" stroke-width="3" /><ellipse cx="16" cy="12" rx="8" ry="3" fill="#b49582" opacity=".17"/></svg>
         </div>
         <h3>Aura Glow Cream</h3>
@@ -352,9 +124,8 @@
         <div class="purpose">Illuminate, hydrate, protect</div>
         <div class="emotion">For mornings that feel golden.</div>
       </div>
-      <div class="product-card">
+      <div class="product-card glass">
         <div class="product-icon">
-          <!-- Serum SVG -->
           <svg viewBox="0 0 32 32"><rect x="12" y="6" width="8" height="20" rx="4" fill="#b49582" opacity=".19"/><rect x="14" y="8" width="4" height="16" rx="2" fill="#b49582" /></svg>
         </div>
         <h3>Velvet Night Serum</h3>
@@ -362,9 +133,8 @@
         <div class="purpose">Repair, rejuvenate, soothe</div>
         <div class="emotion">Sleep like silk. Wake flawless.</div>
       </div>
-      <div class="product-card">
+      <div class="product-card glass">
         <div class="product-icon">
-          <!-- Mist SVG -->
           <svg viewBox="0 0 32 32"><ellipse cx="16" cy="24" rx="10" ry="4" fill="#b49582" opacity=".12"/><ellipse cx="16" cy="16" rx="5" ry="10" fill="#fff7f2" stroke="#b49582" stroke-width="2"/></svg>
         </div>
         <h3>Cloud Mist Essence</h3>
@@ -372,32 +142,36 @@
         <div class="purpose">Tone, refresh, set</div>
         <div class="emotion">A breeze of calm, anytime.</div>
       </div>
-      <!-- Add more product cards as needed -->
     </div>
     <div class="cta">
-      <a href="#contact">Inquire Now</a>
+      <a class="glass-btn" href="#contact">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#fff" stroke-width="2"/></svg>
+        Inquire Now
+      </a>
     </div>
   </section>
-
-  <section class="section scroll-reveal" id="contact">
+  <section class="section scroll-reveal glass" id="contact">
     <h2>Contact Us</h2>
-    <form class="contact-form" autocomplete="off">
+    <form class="contact-form glass" autocomplete="off">
       <input type="text" name="name" placeholder="Your Name" required aria-label="Name">
       <input type="email" name="email" placeholder="Your Email" required aria-label="Email">
       <textarea name="message" rows="4" placeholder="Your Message" required aria-label="Message"></textarea>
-      <button type="submit">Send Ritual</button>
+      <button type="submit" class="glass-btn">
+        <svg viewBox="0 0 24 24"><path d="M2 22l20-10L2 2v7l15 3-15 3z" fill="#fff"/></svg>
+        Send Ritual
+      </button>
       <div class="form-feedback" aria-live="polite"></div>
     </form>
     <div class="cta">
-      <a href="https://wa.me/27600000000" target="_blank" rel="noopener">WhatsApp Consultation</a>
+      <a class="glass-btn" href="https://wa.me/27600000000" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M21.5 18.8c-.3-.1-1.7-.8-1.9-.9-.2-.1-.3-.1-.5.1-.2.2-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.5-1.4-2.1-2.3-.1-.2-.1-.4.1-.6.2-.2.4-.5.6-.8.2-.2.3-.4.3-.6 0-.2 0-.4-.1-.6-.1-.2-1-2.3-1.4-2.6-.4-.3-.6-.3-.8-.3h-.6c-.2 0-.5.1-.7.3-.3.2-1 .9-1 2.2 0 1.3 1 2.6 1.1 2.7.1.1 2.1 3.2 5 4.4 2.9 1.2 3.5 1 4.2.9.7-.1 2.1-.8 2.4-1.6.3-.8.3-1.5.2-1.6z"/></svg>
+        WhatsApp Consultation
+      </a>
     </div>
   </section>
-
-  <!-- WhatsApp floating button -->
-  <a href="https://wa.me/27600000000" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M21.5 18.8c-.3-.1-1.7-.8-1.9-.9-.2-.1-.3-.1-.5.1-.2.2-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.3-.8-.7-1.3-1.6-1.5-1.9-.2-.3 0-.4.1-.6.1-.1.2-.2.3-.3.1-.1.1-.2.2-.3.1-.1.1-.2.2-.4.1-.2 0-.4-.1-.5-.1-.1-1-.6-1.3-.8-.2-.1-.5-.1-.7.1-1.3 1.2-1.1 3.2.3 4.7 1.4 1.6 3.7 2.4 5.1 1.8.5-.2.9-.7 1.1-1.2.1-.3.1-.6 0-.7z"/></svg>
+  <a href="https://wa.me/27600000000" target="_blank" class="whatsapp-float glass" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M21.5 18.8c-.3-.1-1.7-.8-1.9-.9-.2-.1-.3-.1-.5.1-.2.2-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.5-1.4-2.1-2.3-.1-.2-.1-.4.1-.6.2-.2.4-.5.6-.8.2-.2.3-.4.3-.6 0-.2 0-.4-.1-.6-.1-.2-1-2.3-1.4-2.6-.4-.3-.6-.3-.8-.3h-.6c-.2 0-.5.1-.7.3-.3.2-1 .9-1 2.2 0 1.3 1 2.6 1.1 2.7.1.1 2.1 3.2 5 4.4 2.9 1.2 3.5 1 4.2.9.7-.1 2.1-.8 2.4-1.6.3-.8.3-1.5.2-1.6z"/></svg>
   </a>
-
   <script>
     // Aura preloader logic
     window.addEventListener('DOMContentLoaded', () => {
@@ -420,14 +194,53 @@
 
       // Contact Form micro-interaction
       const form = document.querySelector('.contact-form');
-      const feedback = form.querySelector('.form-feedback');
-      form.addEventListener('submit', function(e) {
-        e.preventDefault();
-        feedback.textContent = "Thank you, your ritual inquiry is received.";
-        feedback.classList.add('visible');
-        setTimeout(() => feedback.classList.remove('visible'), 3600);
-        form.reset();
-      });
+      if(form){
+        const feedback = form.querySelector('.form-feedback');
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          feedback.textContent = "Thank you, your ritual inquiry is received.";
+          feedback.classList.add('visible');
+          setTimeout(() => feedback.classList.remove('visible'), 3600);
+          form.reset();
+        });
+      }
+
+      // Ambient Rainfall Effect (CSS canvas, lightweight, mobile-optimized)
+      const canvas = document.getElementById('rainfall-bg');
+      if(canvas){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let ctx = canvas.getContext('2d');
+        let raindrops = [];
+        for(let i=0;i<120;i++){
+          raindrops.push({
+            x: Math.random()*canvas.width,
+            y: Math.random()*canvas.height,
+            l: Math.random()*14+8,
+            sp: Math.random()*1.1+0.7,
+            op: Math.random()*0.12+0.09
+          });
+        }
+        function drawRain(){
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+          for(let i=0;i<raindrops.length;i++){
+            let d=raindrops[i];
+            ctx.beginPath();
+            ctx.strokeStyle=`rgba(180,149,130,${d.op})`;
+            ctx.lineWidth=1.2;
+            ctx.moveTo(d.x,d.y);
+            ctx.lineTo(d.x,d.y+d.l);
+            ctx.stroke();
+            d.y+=d.sp;
+            if(d.y>canvas.height){d.y=-d.l;d.x=Math.random()*canvas.width;}
+          }
+          requestAnimationFrame(drawRain);
+        }
+        drawRain();
+        window.addEventListener('resize',()=>{
+          canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+        });
+      }
     });
   </script>
 </body>
