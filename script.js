@@ -1,9 +1,9 @@
-// Fade-in animation on scroll — smooth, slow aura-like reveal
+// === Soft Fade-In on Scroll ===
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add('fade-in');
-      observer.unobserve(entry.target); // trigger only once
+      observer.unobserve(entry.target);
     }
   });
 }, {
@@ -14,7 +14,7 @@ document.querySelectorAll('.fade-in').forEach((el) => {
   observer.observe(el);
 });
 
-// Optional: Smooth scroll for anchor links
+// === Smooth Anchor Scroll ===
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     e.preventDefault();
@@ -25,5 +25,20 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         block: 'start'
       });
     }
+  });
+});
+
+// === Preloader (soft entry reveal) ===
+window.addEventListener('load', () => {
+  document.body.classList.add('loaded');
+});
+
+// === Optional Glow on Hover (for call-to-action buttons) ===
+document.querySelectorAll('.btn-dark, .btn-light').forEach(button => {
+  button.addEventListener('mouseenter', () => {
+    button.style.boxShadow = '0 0 20px rgba(0,0,0,0.1)';
+  });
+  button.addEventListener('mouseleave', () => {
+    button.style.boxShadow = 'none';
   });
 });
