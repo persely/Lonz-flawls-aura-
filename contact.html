@@ -8,6 +8,12 @@
 </head>
 <body>
 
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="loader-text">Lonz Flawless Aura</div>
+  </div>
+
+  <!-- Header -->
   <header>
     <div class="logo">Lonz Flawless Aura</div>
     <nav>
@@ -18,63 +24,52 @@
     </nav>
   </header>
 
-  <section class="hero">
-    <h1>Reach Out</h1>
-    <p>Whether it's an order, a question, or a whisper of curiosity — we’re listening.</p>
+  <!-- Hero Section -->
+  <section class="hero-full fade-in">
+    <div class="hero-content">
+      <h1>Reach Us Gently</h1>
+      <p>Your glow journey begins here. No noise, no pressure — just calm communication.</p>
+    </div>
   </section>
 
-  <section class="products">
+  <!-- Contact Form -->
+  <section class="section-light fade-in">
+    <form action="https://formsubmit.co/lonzflawlsaura@gmail.com" method="POST" style="max-width: 520px; margin: auto;">
+      <!-- FormSubmit hidden fields -->
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="thank-you.html">
 
-    <!-- Contact / Order Form -->
-    <div class="product-card">
-      <div class="details">
-        <h3>Contact / Order Form</h3>
-        <form action="https://formsubmit.co/lonzflawlsaura@gmail.com" method="POST">
-          <input type="hidden" name="_captcha" value="false">
-          <input type="hidden" name="_next" value="thank-you.html">
+      <label for="name">Full Name</label><br/>
+      <input type="text" id="name" name="name" required><br/><br/>
 
-          <label for="name">Full Name</label><br/>
-          <input type="text" id="name" name="name" required><br/><br/>
+      <label for="email">Email</label><br/>
+      <input type="email" id="email" name="email" required><br/><br/>
 
-          <label for="email">Email Address</label><br/>
-          <input type="email" id="email" name="email" required><br/><br/>
+      <label for="product">What product do you want?</label><br/>
+      <input type="text" id="product" name="product" placeholder="E.g. Extra Glow Soap" required><br/><br/>
 
-          <label for="product">Product You Want</label><br/>
-          <input type="text" id="product" name="product" placeholder="e.g. Extra Glow Soap" required><br/><br/>
+      <label for="message">Message (Optional)</label><br/>
+      <textarea id="message" name="message" rows="4" placeholder="Tell us what you’d love or ask us anything..."></textarea><br/><br/>
 
-          <label for="message">Message (Optional)</label><br/>
-          <textarea id="message" name="message" rows="4"></textarea><br/><br/>
-
-          <button type="submit" class="btn">Send Message</button>
-        </form>
-      </div>
-    </div>
-
-    <!-- WhatsApp Option -->
-    <div class="product-card">
-      <div class="details">
-        <h3>Prefer WhatsApp?</h3>
-        <p>Tap below to message us directly on WhatsApp.</p>
-        <a href="https://wa.me/27735511216?text=Hi%20I%20want%20to%20order%20a%20product%20from%20Lonz%20Flawless%20Aura" class="btn">Message on WhatsApp</a>
-        <p style="margin-top: 10px; color: #777;">Or call us: <strong>+27 73 551 1216</strong></p>
-      </div>
-    </div>
-
+      <button type="submit" class="btn-dark">Send Order</button>
+    </form>
   </section>
 
+  <!-- Footer -->
   <footer>
-    &copy; 2025 Lonz Flawless Aura. All rights reserved. 
+    &copy; 2025 Lonz Flawless Aura. All rights reserved.  
     <br/>
     <a href="#">Instagram</a> |
     <a href="#">TikTok</a> |
     <a href="mailto:lonzflawlsaura@gmail.com">Email Us</a>
   </footer>
 
-  <!-- Floating WhatsApp Button -->
-  <a href="https://wa.me/27735511216?text=Hi%20I'm%20interested%20in%20Lonz%20Flawless%20Aura" 
+  <!-- WhatsApp Button -->
+  <a href="https://wa.me/27735511216?text=Hi%20I’m%20interested%20in%20Lonz%20Flawless%20Aura" 
      class="whatsapp-float" target="_blank" title="Chat with us on WhatsApp">
     <img src="images/whatsapp-icon.png" alt="WhatsApp Chat" />
   </a>
 
+  <script src="script.js"></script>
 </body>
 </html>
