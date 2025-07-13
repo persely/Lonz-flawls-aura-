@@ -167,3 +167,17 @@ footer a:hover {
 .whatsapp-float:hover {
   transform: scale(1.05);
 }
+
+/* Fade-in Animation */
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 1s ease;
+}
+
+.product-card,
+.hero,
+.details {
+  opacity: 0;
+  transform: translateY(30px);
+}
