@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Thank You | Lonz Flawless Aura</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Thank you for beginning your velvet ritual with Lonz Flawless Aura. Quiet power. Timeless presence.">
+  <link rel="stylesheet" href="assets/fonts/velvet.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="assets/svg/aura-icon.svg">
+  <style>
+    /* --- Aura Glass Elevation --- */
+    .glass {
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(18px) saturate(120%);
+      box-shadow: 0 8px 44px 0 rgba(231,199,124,0.13), 0 1px 0 #fff3;
+      border-radius: 24px;
+      border: 1px solid rgba(231,199,124,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    header, nav, .thankyou-section, .cta-btn, .whatsapp-float, footer {
+      background: rgba(255,255,255,0.27);
+      backdrop-filter: blur(11px) saturate(120%);
+      box-shadow: 0 2px 22px rgba(231,199,124,0.09);
+      border-radius: 18px;
+      border: 1px solid rgba(231,199,124,0.07);
+      position: relative;
+      overflow: hidden;
+    }
+    nav a, .cta-btn, .whatsapp-float {
+      transition: box-shadow .3s, transform .2s, background .3s;
+    }
+    nav a:hover, nav a:focus, .cta-btn:active, .whatsapp-float:active {
+      background: rgba(255,255,255,0.44);
+      box-shadow: 0 0 44px 0 #e7c77ccc, 0 0 8px #fff2;
+      transform: scale(1.05);
+    }
+    .cta-btn:active::after, .whatsapp-float:active::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, #e7c77c33 0%, transparent 80%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: .4;
+      z-index: 2;
+      animation: rippleAura .7s ease-out;
+    }
+    @keyframes rippleAura {
+      from { opacity: .6; width: 0; height: 0;}
+      to { opacity: 0; width: 160px; height: 160px;}
+    }
+    .nav-icon, .whatsapp-float svg {
+      filter: drop-shadow(0 0 12px #e7c77c55);
+      transition: filter .18s;
+    }
+    nav a:hover .nav-icon, .whatsapp-float:hover svg {
+      filter: drop-shadow(0 0 19px #e7c77ccc);
+    }
+    /* --- Rainfall Background --- */
+    #rainfall-bg {
+      position: fixed;
+      inset: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background: transparent;
+    }
+    /* --- Section Reveal --- */
+    .fade-in { opacity: 0; transform: translateY(28px) scale(.98); transition: opacity .7s cubic-bezier(.8,.2,.2,1), transform .7s cubic-bezier(.8,.2,.2,1);}
+    .fade-in.appear { opacity: 1; transform: translateY(0) scale(1);}
+  </style>
+</head>
+<body>
+  <canvas id="rainfall-bg"></canvas>
+  <!-- Header -->
+  <header class="glass fade-in">
+    <span class="brand">
+      <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="#e7c77c" opacity="0.12"/><circle cx="16" cy="16" r="8" fill="#e7c77c" opacity="0.33"/></svg>
+      Lonz Flawless Aura
+    </span>
+    <nav class="glass">
+      <a href="index.html"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 12L12 3l9 9v7a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4a2 2 0 0 0-2-2H5a2 2 0 0 1-2-2z" fill="#e7c77c"/></svg>Home</a>
+      <a href="about.html"><svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#e7c77c"/></svg>About</a>
+      <a href="products.html"><svg class="nav-icon" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" fill="#e7c77c"/></svg>Products</a>
+      <a href="contact.html"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 21l-8-5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11z" fill="#e7c77c"/></svg>Contact</a>
+    </nav>
+  </header>
+  <!-- Thank You Section -->
+  <section class="thankyou-section glass fade-in">
+    <h1>Thank You</h1>
+    <div style="margin: 2rem 0;">
+      <svg viewBox="0 0 64 64" width="64" height="64"><circle cx="32" cy="32" r="30" fill="#e7c77c" opacity="0.14"/><circle cx="32" cy="32" r="20" fill="#e7c77c" opacity="0.22"/><text x="32" y="38" text-anchor="middle" font-size="24" fill="#e7c77c" font-family="serif">✓</text></svg>
+    </div>
+    <p>
+      Your ritual is received.<br>
+      Velvet skin is a journey of presence, not perfection.<br>
+      We honour your quiet power and timeless story.<br>
+      <span style="font-weight:600;">Welcome to Lonz Flawless Aura.</span>
+    </p>
+    <div style="margin-top:2rem;">
+      <a href="products.html" class="cta-btn glass fade-in">
+        <svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#e7c77c" stroke-width="2"/></svg>
+        Discover More Rituals
+      </a>
+      <a href="index.html" class="cta-btn glass fade-in" style="margin-left:1rem;">
+        <svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 12L12 3l9 9v7a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4a2 2 0 0 0-2-2H5a2 2 0 0 1-2-2z" fill="#e7c77c"/></svg>
+        Home
+      </a>
+    </div>
+  </section>
+  <!-- WhatsApp Floating Button -->
+  <a class="whatsapp-float glass fade-in" href="https://wa.me/27637276124?text=Hello%20Lonz%20Flawless%20Aura%20Team,%20I'm%20ready%20to%20begin%20my%20skin%20ritual." target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M22.1 19.3l-1.9-.6c-.3-.1-.5-.2-.7.2-.2.3-.4.5-.7.6-.2.1-.5.1-.7-.1l-1.3-1c-1.1-.8-1.9-1.8-2.5-2.9-.2-.4-.2-.6.1-.8.2-.2.3-.4.5-.7.2-.2.2-.4.2-.6 0-.2-.1-.4-.2-.7-.1-.2-.9-2.4-1.2-2.9-.3-.4-.6-.4-.8-.4h-.6c-.2 0-.5.1-.7.3-.3.2-1.1 1-1.1 2.3 0 1.4 1.1 2.7 1.2 2.8.1.1 2.2 3.3 5.3 4.6 3.1 1.3 3.7 1.1 4.4 1 .7-.1 2.2-.9 2.5-1.7.4-.8.4-1.6.3-1.7z"/></svg>
+  </a>
+  <!-- Footer -->
+  <footer class="glass fade-in">
+    &copy; 2025 Lonz Flawless Aura. Velvet Rituals, South African Precision.<br>
+    <div class="footer-social">
+      <a href="https://instagram.com/lonzflawlsaura" target="_blank" aria-label="Instagram">Instagram</a>
+      <a href="https://wa.me/27637276124" target="_blank" aria-label="WhatsApp">WhatsApp</a>
+      <a href="mailto:lonzflawlsaura@gmail.com" aria-label="Email">Email</a>
+    </div>
+  </footer>
+  <!-- JS: Aura Motion & Ambient Rainfall -->
+  <script>
+    // Ambient Rainfall
+    const canvas = document.getElementById('rainfall-bg');
+    if(canvas){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      let ctx = canvas.getContext('2d');
+      let drops = [];
+      for(let i=0;i<90;i++){
+        drops.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*canvas.height,
+          l: Math.random()*12+8,
+          sp: Math.random()*1.1+0.5,
+          op: Math.random()*0.13+0.07
+        });
+      }
+      function drawRain(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(let i=0;i<drops.length;i++){
+          let d=drops[i];
+          ctx.beginPath();
+          ctx.strokeStyle=`rgba(231,199,124,${d.op})`;
+          ctx.lineWidth=1.1;
+          ctx.moveTo(d.x,d.y);
+          ctx.lineTo(d.x,d.y+d.l);
+          ctx.stroke();
+          d.y+=d.sp;
+          if(d.y>canvas.height){d.y=-d.l;d.x=Math.random()*canvas.width;}
+        }
+        requestAnimationFrame(drawRain);
+      }
+      drawRain();
+      window.addEventListener('resize',()=>{
+        canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+      });
+    }
+    // Section fade-in reveal
+    function fadeInOnScroll() {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 60) el.classList.add('appear');
+      });
+    }
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('DOMContentLoaded', fadeInOnScroll);
+  </script>
+</body>
+</html>
