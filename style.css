@@ -1,4 +1,19 @@
-/* === GENERAL === */
+/* === LONZ FLAWLESS AURA SYSTEM: ELEVATED CSS === */
+/* Aura, glass, rainfall, feather, ripple, emotional motion, mobile-first. No average. */
+
+/* --- General Reset & Aura Variables --- */
+:root {
+  --aura-gold: #e7c77c;
+  --aura-frost: rgba(255,255,255,0.22);
+  --aura-glass: rgba(255,255,255,0.27);
+  --aura-blur: blur(18px);
+  --aura-radius: 18px;
+  --aura-shadow: 0 8px 44px 0 rgba(231,199,124,0.13), 0 1px 0 #fff3;
+  --aura-highlight: 0 0 44px 0 #e7c77ccc, 0 0 8px #fff2;
+  --aura-gradient: linear-gradient(135deg, #fceff9 0%, #f5faff 100%);
+  --aura-bg: #f8f6f1;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -7,136 +22,183 @@
 }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background: #fff;
+  font-family: 'Segoe UI', 'Velvet', serif, sans-serif;
+  background: var(--aura-bg);
   color: #111;
   line-height: 1.7;
   transition: background 0.3s ease;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* === LOADER === */
-#preloader {
+/* --- Rainfall Ambient Layer --- */
+#rainfall-bg {
   position: fixed;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  inset: 0;
+  width: 100vw; height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background: transparent;
 }
 
-.loader-text {
-  font-size: 1.4rem;
-  letter-spacing: 2px;
-  color: #111;
+/* --- Glassmorphism for All Major UI Containers --- */
+header, nav, .hero-full, .section-light, .section-dark, .section-center, .product-card, .testimonial-list blockquote, form, .cta-btn, .whatsapp-float, footer {
+  background: var(--aura-glass);
+  backdrop-filter: var(--aura-blur) saturate(120%);
+  box-shadow: var(--aura-shadow);
+  border-radius: var(--aura-radius);
+  border: 1px solid rgba(231,199,124,0.08);
+  position: relative;
+  overflow: hidden;
 }
 
-body.loaded #preloader {
-  opacity: 0;
-  visibility: hidden;
-  transition: 0.6s ease;
+/* --- Feather Icon Style --- */
+[data-feather] {
+  stroke: var(--aura-gold);
+  width: 26px;
+  height: 26px;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 14px #e7c77c44);
+  transition: filter .18s;
 }
+a:hover [data-feather], .cta-btn:hover [data-feather] { filter: drop-shadow(0 0 22px #e7c77ccc); }
 
-/* === HEADER === */
+/* --- Header --- */
 header {
-  background: #fff;
-  padding: 1rem 2rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 1.2rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
   z-index: 100;
+  background: var(--aura-glass);
+  box-shadow: 0 2px 22px rgba(231,199,124,0.09);
 }
-
 .logo {
   font-weight: bold;
-  font-size: 1.4rem;
-  color: #111;
+  font-size: 1.6rem;
+  color: var(--aura-gold);
   letter-spacing: 1px;
+  text-shadow: 0 2px 11px #e7c77c22;
 }
-
+nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
 nav a {
-  margin-left: 1.5rem;
+  color: #222;
+  font-size: 1rem;
   text-decoration: none;
-  color: #555;
-  font-weight: 500;
+  padding: .6rem 1.2rem;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  gap: .5em;
+  transition: box-shadow .3s, background .3s, transform .2s;
+  position: relative;
+}
+nav a:hover, nav a:focus {
+  background: var(--aura-frost);
+  box-shadow: var(--aura-highlight);
+  transform: scale(1.07);
 }
 
-nav a:hover {
-  color: #111;
-}
-
-/* === HERO === */
+/* --- Hero --- */
 .hero-full {
   min-height: 80vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #fceff9, #f5faff);
+  background: var(--aura-gradient);
   text-align: center;
-  padding: 4rem 2rem;
+  padding: 4rem 2vw;
+  margin-top: 2rem;
+  box-shadow: 0 8px 44px 0 rgba(231,199,124,0.13);
 }
-
 .hero-content h1 {
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: #111;
+  color: var(--aura-gold);
+  text-shadow: 0 2px 22px #e7c77c33;
 }
-
 .hero-content p {
   font-size: 1.1rem;
   color: #444;
   max-width: 600px;
   margin: 0 auto 2rem;
+  line-height: 1.6;
 }
 
+/* --- Buttons / CTA --- */
 .btn-light,
-.btn-dark {
-  display: inline-block;
-  padding: 0.8rem 1.6rem;
+.btn-dark,
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5em;
+  padding: 0.8rem 1.8rem;
   border-radius: 30px;
   text-decoration: none;
   font-weight: bold;
-  transition: all 0.3s ease;
+  font-size: 1.08rem;
+  box-shadow: var(--aura-shadow);
+  transition: all 0.3s cubic-bezier(.7,.2,.2,1);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  outline: none;
+  border: none;
 }
-
 .btn-light {
   background: #fff;
   color: #111;
   border: 1px solid #ddd;
 }
-
-.btn-dark {
-  background: #111;
-  color: #fff;
+.btn-dark, .cta-btn {
+  background: var(--aura-glass);
+  color: #111;
+  border: 1px solid #e7c77c44;
+}
+.btn-light:hover, .btn-dark:hover, .cta-btn:hover, .cta-btn:focus {
+  background: var(--aura-frost);
+  box-shadow: var(--aura-highlight);
+  transform: scale(1.05);
+}
+.btn-light:active, .btn-dark:active, .cta-btn:active {
+  background: var(--aura-frost);
+  box-shadow: 0 0 44px 0 #e7c77ccc, 0 0 8px #fff2;
+  transform: scale(1.07);
 }
 
-.btn-light:hover,
-.btn-dark:hover {
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+/* --- Ripple Aura Effect --- */
+.ripple-aura {
+  position: absolute;
+  width: 160px; height: 160px;
+  background: radial-gradient(circle, #e7c77c44 0%, transparent 80%);
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: .38;
+  transform: translate(-50%, -50%);
+  animation: rippleAura .7s ease-out;
+  z-index: 2;
+}
+@keyframes rippleAura {
+  from { opacity: .7; width: 0; height: 0;}
+  to { opacity: 0; width: 160px; height: 160px;}
 }
 
-/* === SECTIONS === */
-.section-light {
-  background: #fff;
-  padding: 4rem 2rem;
+/* --- Section Glass --- */
+.section-light, .section-dark, .section-center {
+  padding: 4rem 2vw;
   text-align: center;
-}
-
-.section-dark {
-  background: #f7f7f7;
-  padding: 4rem 2rem;
-  text-align: center;
-}
-
-.section-center {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: #fefefe;
+  margin: 2rem auto;
+  max-width: 1100px;
+  background: var(--aura-glass);
 }
 
 .section-light h2,
@@ -144,18 +206,11 @@ nav a:hover {
 .section-center h2 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: #111;
+  color: var(--aura-gold);
+  text-shadow: 0 2px 11px #e7c77c22;
 }
 
-.section-light p,
-.section-dark p,
-.section-center p {
-  max-width: 700px;
-  margin: 0 auto;
-  color: #555;
-}
-
-/* === TESTIMONIALS === */
+/* --- Testimonials --- */
 .testimonial-list {
   display: flex;
   flex-direction: column;
@@ -165,132 +220,193 @@ nav a:hover {
   font-style: italic;
   color: #333;
 }
-
 .testimonial-list blockquote {
-  background: #fff;
+  background: var(--aura-glass);
   padding: 1rem 1.5rem;
-  border-left: 4px solid #111;
-  border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+  border-left: 4px solid var(--aura-gold);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px #e7c77c08;
 }
 
-/* === PRODUCT CARDS === */
+/* --- Product Gallery & Cards --- */
 .product-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
-  padding: 4rem 2rem;
+  padding: 4rem 2vw;
   max-width: 1100px;
   margin: auto;
 }
-
 .product-card {
-  background: #fff;
+  background: var(--aura-glass);
   border: 1px solid #eee;
-  border-radius: 10px;
+  border-radius: 18px;
   padding: 2rem;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.02);
-  transition: transform 0.2s ease;
+  box-shadow: var(--aura-shadow);
+  transition: box-shadow .31s, transform .22s;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .8em;
+  cursor: pointer;
 }
-
 .product-card:hover {
-  transform: translateY(-5px);
+  box-shadow: 0 0 38px 10px #e7c77c99, 0 6px 38px #e7c77c22;
+  transform: scale(1.01);
 }
-
-.product-card h3 {
+.product-card h3, .prod-name {
   font-size: 1.3rem;
-  color: #111;
-  margin-bottom: 0.5rem;
+  font-weight: 700;
+  color: var(--aura-gold);
+  margin-bottom: .2em;
+  text-shadow: 0 2px 8px #e7c77c22;
+}
+.product-card p, .prod-purpose {
+  color: #333;
+  font-size: 1rem;
+}
+.prod-line {
+  font-size: 1rem;
+  color: #8c7c4b;
+  font-weight: 600;
+  margin-bottom: .2em;
+  text-shadow: 0 2px 8px #e7c77c11;
+}
+.prod-emotion {
+  font-size: 1.02rem;
+  font-style: italic;
+  color: var(--aura-gold);
+  margin-top: .5em;
+  cursor: pointer;
+  transition: text-shadow .48s cubic-bezier(.7,.2,.2,1);
+}
+.prod-emotion:hover {
+  text-shadow: 0 0 16px #e7c77c88;
 }
 
-.product-card p {
-  color: #555;
-  font-size: 0.95rem;
-}
-
-/* === FORM === */
-form input,
-form textarea {
+/* --- Form Glass --- */
+form input, form textarea {
   width: 100%;
   padding: 0.8rem 1rem;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #e7c77c44;
+  border-radius: 12px;
   font-size: 1rem;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
+  background: var(--aura-frost);
+  box-shadow: 0 2px 14px #e7c77c18;
+  outline: none;
+  transition: border .19s, box-shadow .17s;
 }
-
+form input:focus, form textarea:focus {
+  border: 1.5px solid var(--aura-gold);
+  box-shadow: 0 0 22px #e7c77c44;
+}
 form button {
-  background: #111;
+  background: var(--aura-gold);
   color: #fff;
   padding: 0.8rem 1.6rem;
   border: none;
   border-radius: 30px;
   cursor: pointer;
   font-weight: bold;
-  transition: background 0.3s ease;
+  transition: background 0.3s ease, box-shadow .22s;
+  box-shadow: 0 2px 12px #e7c77c22;
 }
-
 form button:hover {
-  background: #333;
+  background: #222;
+  color: var(--aura-gold);
+  box-shadow: 0 0 22px #e7c77c99;
 }
 
-/* === FOOTER === */
-footer {
+/* --- WhatsApp Floating Button --- */
+.whatsapp-float {
+  position: fixed;
+  bottom: 22px;
+  right: 22px;
+  z-index: 88;
+  width: 58px; height: 58px;
+  border-radius: 99px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 22px #25D36644;
   background: #fff;
+  cursor: pointer;
+  transition: box-shadow .33s, transform .22s;
+}
+.whatsapp-float:hover {
+  box-shadow: 0 0 36px 8px #25D36688;
+  transform: scale(1.08);
+}
+.whatsapp-float svg {
+  width: 36px; height: 36px;
+  filter: drop-shadow(0 0 14px #25D36688);
+}
+
+/* --- Footer --- */
+footer {
+  background: var(--aura-glass);
   color: #555;
   text-align: center;
   padding: 2rem;
-  font-size: 0.9rem;
+  font-size: 0.98rem;
   border-top: 1px solid #eee;
+  box-shadow: 0 1px 12px #e7c77c18;
+}
+.footer-social {
+  margin-top: .7em;
+  display: flex;
+  gap: 2em;
+  justify-content: center;
+  align-items: center;
+}
+.footer-social a {
+  color: var(--aura-gold);
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.07em;
+  letter-spacing: .03em;
+  transition: text-shadow .26s, color .18s;
+}
+.footer-social a:hover {
+  color: #222;
+  text-shadow: 0 0 14px #e7c77c99;
 }
 
-/* === WHATSAPP BUTTON === */
-.whatsapp-float {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 200;
+/* --- Fade-in, Aura Scroll Animation --- */
+.fade-in { 
+  opacity: 0; 
+  transform: translateY(28px) scale(.98); 
+  transition: opacity .7s cubic-bezier(.8,.2,.2,1), transform .7s cubic-bezier(.8,.2,.2,1); 
+}
+.fade-in.appear { 
+  opacity: 1; 
+  transform: translateY(0) scale(1); 
 }
 
-.whatsapp-float img {
-  width: 50px;
-  height: 50px;
-}
-
-/* === FADE-IN EFFECT === */
-.fade-in {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease;
-}
-
-.fade-in.appear,
-body.loaded .fade-in {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* === RESPONSIVE === */
+/* --- Responsive, Mobile-First --- */
 @media screen and (max-width: 768px) {
-  header {
-    flex-direction: column;
-    align-items: flex-start;
+  header, .hero-full, .section-light, .section-dark, .section-center, footer {
+    margin: 1rem 1vw;
+    padding: 1rem 3vw;
   }
-
-  nav a {
-    margin: 0.5rem 0;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .hero-content p {
-    font-size: 1rem;
-  }
-
-  .product-gallery {
-    grid-template-columns: 1fr;
-  }
+  .logo { font-size: 1.15rem; }
+  .hero-content h1 { font-size: 1.44rem; }
+  .product-card { min-height: 180px; padding: 1.2rem .6rem;}
+  .whatsapp-float { width: 44px; height: 44px;}
+  .whatsapp-float svg { width: 26px; height: 26px;}
+  .product-gallery { grid-template-columns: 1fr; }
+  nav { flex-direction: column; gap: .7em;}
+  nav a { margin: 0.5rem 0; }
 }
+
+/* --- Parallax Aura Depth --- */
+.hero-full, .section-light, .section-dark, .section-center {
+  will-change: transform;
+  transition: transform .35s cubic-bezier(.8,.2,.2,1);
+}
+
+/* --- Breath, Calm, Minimal Aura --- */
+/* System aura keywords invoked through space, light, motion, glass, and gold. */
