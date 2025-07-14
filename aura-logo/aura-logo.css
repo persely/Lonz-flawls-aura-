@@ -1,0 +1,66 @@
+.aura-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;
+  position: relative;
+  z-index: 1;
+  isolation: isolate;
+}
+
+/* Golden SVG logo style */
+.aura-logo svg {
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  transition: filter 0.4s ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+  z-index: 2;
+  pointer-events: none;
+  will-change: filter;
+}
+
+/* Glow shimmer that moves across logo */
+.aura-logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent 0%,
+    rgba(255, 230, 150, 0.15) 50%,
+    transparent 100%
+  );
+  animation: shimmer-move 4.5s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Breathing aura glow - controlled in JS too */
+@keyframes shimmer-move {
+  0% {
+    left: -50%;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+/* Optional shimmer overlay pulse */
+.aura-logo svg:hover {
+  filter: drop-shadow(0 0 40px rgba(255, 215, 0, 0.85));
+}
+
+/* Mobile scaling */
+@media (max-width: 600px) {
+  .aura-logo {
+    padding: 40px 0;
+  }
+
+  .aura-logo svg {
+    max-width: 260px;
+  }
+}
