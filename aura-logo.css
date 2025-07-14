@@ -1,0 +1,37 @@
+.aura-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 0;
+  position: relative;
+}
+
+.aura-logo svg {
+  width: 300px;
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4));
+  animation: aura-breath 6s ease-in-out infinite;
+}
+
+/* Create moving shimmer across the logo */
+.aura-logo::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -50%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent 0%, rgba(255, 215, 0, 0.2) 50%, transparent 100%);
+  animation: shimmer 4s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes shimmer {
+  0% { left: -50%; }
+  100% { left: 100%; }
+}
+
+@keyframes aura-breath {
+  0%, 100% { filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.4)); }
+  50% { filter: drop-shadow(0 0 25px rgba(255, 215, 0, 0.7)); }
+}
