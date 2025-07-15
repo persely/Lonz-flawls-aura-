@@ -166,3 +166,21 @@ const initRevealAura = () => {
 };
 
 initRevealAura();
+
+const initAuraSwipe = () => {
+  const cards = document.querySelectorAll('.aura-card');
+
+  const onScroll = () => {
+    cards.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.9) {
+        el.classList.add('visible');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', onScroll);
+  onScroll(); // Run once
+};
+
+initAuraSwipe();
