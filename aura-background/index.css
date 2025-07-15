@@ -1,0 +1,67 @@
+/* ==== LONZ FLAWLS AURA – ENHANCED BACKGROUND CSS SYSTEM ==== */
+
+/* CSS Variables for theme tuning */
+:root {
+  --gold-deep: #d4af37;
+  --gold-bright: #ffd700;
+  --glow-light: rgba(255, 255, 180, 0.08);
+  --glow-heavy: rgba(212, 175, 55, 0.15);
+  --black-aura: rgba(0, 0, 0, 0.2);
+}
+
+/* Load elegant webfont (no plugin needed) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  background: url('../assets/images/background-sunset-aura.jpg') no-repeat center center fixed;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: #000;
+  font-family: 'Playfair Display', serif;
+  color: #fff;
+  overflow-x: hidden;
+  animation: auraFade 3s ease-in-out both;
+}
+
+/* SVG animation-ready fade */
+@keyframes auraFade {
+  0% { opacity: 0; transform: scale(1.02); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+/* Floating shimmer aura */
+.background-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse at 30% 40%, var(--glow-heavy), transparent),
+              radial-gradient(ellipse at 70% 60%, var(--glow-light), transparent);
+  animation: moveGlow 18s ease-in-out infinite;
+}
+
+/* Aura shimmer movement */
+@keyframes moveGlow {
+  0%   { transform: translateY(0) scale(1); }
+  50%  { transform: translateY(-2%) scale(1.02); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Translucent luxury content wrapper */
+.lux-content {
+  position: relative;
+  z-index: 2;
+  padding: 4rem 2rem;
+  backdrop-filter: blur(10px);
+  background: var(--black-aura);
+  border-radius: 18px;
+  box-shadow: 0 0 60px var(--glow-heavy);
+  transition: all 0.4s ease;
+}
