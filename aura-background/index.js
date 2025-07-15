@@ -1,3 +1,9 @@
+// Start with loading aura
+document.body.classList.add("loading");
+setTimeout(() => {
+  document.body.classList.remove("loading");
+}, 2200);
+
 // ==== LONZ FLAWLS AURA – BACKGROUND JS ENHANCEMENT ====
 
 document.addEventListener("DOMContentLoaded", () => {
