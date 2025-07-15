@@ -124,3 +124,26 @@ const saveVisitAura = () => {
 };
 
 saveVisitAura();
+
+// ==== SOUND AURA ====
+const initSoundToggle = () => {
+  const btn = document.getElementById("aura-sound-toggle");
+  const audio = document.getElementById("aura-sound");
+
+  if (!btn || !audio) return;
+
+  let playing = false;
+
+  btn.addEventListener("click", () => {
+    if (playing) {
+      audio.pause();
+      btn.textContent = "🔊";
+    } else {
+      audio.play();
+      btn.textContent = "🔇";
+    }
+    playing = !playing;
+  });
+};
+
+initSoundToggle();
