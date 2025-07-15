@@ -147,3 +147,22 @@ const initSoundToggle = () => {
 };
 
 initSoundToggle();
+
+// ==== SECTION REVEAL AURA ====
+const initRevealAura = () => {
+  const reveals = document.querySelectorAll('.reveal-aura');
+
+  const onScroll = () => {
+    reveals.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight * 0.9) {
+        el.classList.add('visible');
+      }
+    });
+  };
+
+  window.addEventListener('scroll', onScroll);
+  onScroll(); // Run once on load
+};
+
+initRevealAura();
