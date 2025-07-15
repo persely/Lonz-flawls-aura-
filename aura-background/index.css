@@ -109,3 +109,16 @@ body.scrolled .lux-content {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* === AURA CARD SWIPE === */
+.aura-card {
+  opacity: 0;
+  transform: translateX(80px);
+  transition: transform 0.8s ease-out, opacity 0.8s ease-out;
+  will-change: transform, opacity;
+}
+
+.aura-card.visible {
+  transform: translateX(0);
+  opacity: 1;
+}
