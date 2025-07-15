@@ -184,3 +184,18 @@ const initAuraSwipe = () => {
 };
 
 initAuraSwipe();
+
+// ==== AUTO THEME BY TIME ====
+const setTimeTheme = () => {
+  const hour = new Date().getHours();
+  const root = document.documentElement;
+  if (hour >= 6 && hour < 18) {
+    root.style.setProperty('--gold-bright', '#ffe680');
+    root.style.setProperty('--gold-deep', '#d4af37');
+  } else {
+    root.style.setProperty('--gold-bright', '#fff5cc');
+    root.style.setProperty('--gold-deep', '#a67c00');
+  }
+};
+
+setTimeTheme();
