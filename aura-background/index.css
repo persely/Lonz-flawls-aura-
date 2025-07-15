@@ -96,3 +96,16 @@ body.scrolled .lux-content {
   opacity: 0.15;
   transition: background 0.3s;
 }
+
+/* === SECTION AURA REVEAL === */
+.reveal-aura {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s ease, transform 1s ease;
+  will-change: opacity, transform;
+}
+
+.reveal-aura.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
