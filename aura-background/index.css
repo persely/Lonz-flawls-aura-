@@ -122,3 +122,13 @@ body.scrolled .lux-content {
   transform: translateX(0);
   opacity: 1;
 }
+
+@keyframes auraPulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.02); }
+  100% { transform: scale(1); }
+}
+
+body.loading {
+  animation: auraPulse 2.2s ease-in-out 1;
+}
