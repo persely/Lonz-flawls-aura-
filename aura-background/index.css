@@ -80,3 +80,19 @@ body.scrolled .lux-content {
   backdrop-filter: blur(12px);
   box-shadow: 0 0 80px var(--gold-bright);
 }
+
+/* === CURSOR AURA === */
+.cursor-aura {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--gold-bright), transparent 60%);
+  pointer-events: none;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  opacity: 0.15;
+  transition: background 0.3s;
+}
