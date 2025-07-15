@@ -65,3 +65,18 @@ body {
   box-shadow: 0 0 60px var(--glow-heavy);
   transition: all 0.4s ease;
 }
+
+/* ==== PARTICLE CANVAS STYLING ==== */
+.aura-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Extra aura polish when scrolling */
+body.scrolled .lux-content {
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 80px var(--gold-bright);
+}
