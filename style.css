@@ -533,3 +533,21 @@ footer {
   background: #fff0f6;
   transform: rotateY(180deg);
 }
+
+.glow-reveal {
+  padding: 80px 20px;
+  background: #fff0f5;
+  text-align: center;
+}
+
+.glow-reveal h2 {
+  font-family: 'Playfair Display', serif;
+  color: #b85a8c;
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+#before-after {
+  max-width: 600px;
+  margin: 0 auto;
+}
