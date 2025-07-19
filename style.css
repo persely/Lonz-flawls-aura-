@@ -410,3 +410,24 @@ footer {
 
 /* --- Breath, Calm, Minimal Aura --- */
 /* System aura keywords invoked through space, light, motion, glass, and gold. */
+
+.brand-story {
+  background: linear-gradient(145deg, #fff0f5, #ffe6f0);
+  border-top: 2px solid #f9c8d9;
+  border-bottom: 2px solid #f9c8d9;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+.brand-story h2 {
+  font-family: 'Playfair Display', serif;
+  color: #e91e63;
+}
+
+.brand-story p {
+  font-weight: 400;
+  color: #333;
+}
+
+.brand-story ul li::before {
+  content: "💗 ";
+}
