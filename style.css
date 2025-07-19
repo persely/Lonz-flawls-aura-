@@ -431,3 +431,23 @@ footer {
 .brand-story ul li::before {
   content: "💗 ";
 }
+
+.logo {
+  position: relative;
+  width: 200px;
+  animation: auraPulse 3s infinite ease-in-out;
+  border-radius: 50%;
+  box-shadow: 0 0 15px rgba(255, 192, 203, 0.7);
+}
+
+@keyframes auraPulse {
+  0% {
+    box-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(255, 192, 203, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(255, 192, 203, 0.5);
+  }
+}
