@@ -1,54 +1,217 @@
-/* 
-  Lonz Flawls Aura Premium Skincare | aura-background/background.css
-  — Next-gen, scalable, modular, and system-aware CSS background layer —
-  Author: GitHub Copilot Chat Assistant
-  Date: 2025-07-20
+/* ================================
+    ✨ AURA CSS FOUNDATION BASE ✨
+    by Vukona & ChatGPT 2025
+   ================================ */
 
-  SYSTEM DESIGN:
-    - This file is the global background & layout base layer for the entire site.
-    - It expects semantic HTML structure with main, section, header, footer, etc.
-    - Works in harmony with component, utility, and theming CSS (to be loaded separately).
-    - No class/ID collisions—namespace reserved for aura-background only.
-    - Mobile-first, minified, accessible, and SEO-optimized.
-    - All backgrounds are lazy, performant, and have graceful fallbacks.
-    - Ready for dark/light/contrast theme expansion.
-*/
-
-/* 0. CSS RESET & FOUNDATION */
-:root {
-  /* Brand Colors (adjust for theme expansion) */
-  --aura-bg-dark: #191919;
-  --aura-bg-light: #fffdfa;
-  --aura-gold: #bfa16a;
-  --aura-gray: #eae6df;
-  --aura-rose: #ffe6e6;
-  --aura-shadow: 0 4px 24px rgba(31, 22, 7, 0.08);
-
-  /* Background gradients */
-  --aura-gradient-main: linear-gradient(135deg, #fffdfa 0%, #f8f6f2 100%);
-  --aura-gradient-gold: linear-gradient(90deg, #bfa16a 0%, #fffdf5 100%);
-  --aura-gradient-rose: linear-gradient(120deg, #ffe6e6 0%, #faf3e6 100%);
-
-  /* Elevation & Border */
-  --aura-border-radius: 1.25rem;
-  --aura-border-thin: 1px solid #eae6df;
-  --aura-border-gold: 2px solid #bfa16a;
-
-  /* Fallback font system */
-  --aura-font-stack: 'Inter', 'Helvetica Neue', Arial, 'Segoe UI', sans-serif;
-  --aura-font-size-base: 16px;
-  --aura-line-height: 1.6;
-
-  /* Responsive breakpoints */
-  --aura-breakpoint-sm: 480px;
-  --aura-breakpoint-md: 768px;
-  --aura-breakpoint-lg: 1200px;
-
-  /* Z-Layers */
-  --aura-z-bg: 0;
-  --aura-z-content: 10;
-  --aura-z-modal: 100;
+/* 0. CSS Reset */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* CSS Reset (minimal, preserves accessibility) */
-html
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  background-color: var(--aura-bg-light);
+  background-image: var(--aura-gradient-main), var(--aura-texture-overlay);
+  color: var(--aura-text-primary);
+  min-height: 100vh;
+  z-index: var(--aura-z-base);
+  position: relative;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 1. Aura Theme Variables */
+:root {
+  /* Fonts */
+  --aura-font-main: 'Poppins', 'Helvetica Neue', sans-serif;
+  --aura-font-headline: 'Playfair Display', serif;
+  --aura-font-size-base: 1rem;
+  --aura-line-height: 1.6;
+
+  /* Colors */
+  --aura-gold: #c9a94e;
+  --aura-black: #111111;
+  --aura-cream: #fdf8f2;
+  --aura-white: #ffffff;
+  --aura-blush-pink: #fce4ec;
+  --aura-deep-marble: #2a2a2a;
+
+  /* Gradients */
+  --aura-gradient-main: linear-gradient(to bottom right, #fdf8f2 0%, #f5e1c1 35%, #c9a94e 100%);
+  --aura-gradient-velvet: linear-gradient(145deg, #3e2c41 0%, #1a1a1a 100%);
+  --aura-gradient-sunset: radial-gradient(circle, #fce4ec, #f5d0bb, #d5b081);
+
+  /* Shadows */
+  --aura-shadow-light: 0 2px 12px rgba(201, 169, 78, 0.2);
+  --aura-shadow-gold: 0 4px 16px rgba(201, 169, 78, 0.4);
+  --aura-shadow-deep: 0 6px 20px rgba(0, 0, 0, 0.5);
+
+  /* Z-Index Layers */
+  --aura-z-base: 1;
+  --aura-z-bg: -1;
+  --aura-z-mid: 10;
+  --aura-z-top: 999;
+
+  /* Filters */
+  --aura-blur-soft: blur(8px);
+  --aura-saturate: saturate(120%);
+  --aura-bright: brightness(1.1);
+
+  /* Others */
+  --aura-transition: all 0.3s ease-in-out;
+  --aura-border-radius: 16px;
+
+  /* Background Overlay Textures */
+  --aura-texture-overlay: url('/assets/velvet-mist.png');
+}
+
+/* 2. Universal Elements */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--aura-transition);
+}
+
+img, video, canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+button {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  transition: var(--aura-transition);
+}
+
+ul[role='list'], ol[role='list'] {
+  list-style: none;
+}
+
+/* 3. Layout Helpers */
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* 4. Background Visual Layers */
+.aura-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--aura-z-bg);
+  pointer-events: none;
+  background-image: var(--aura-gradient-main), var(--aura-texture-overlay);
+  background-size: cover;
+  background-blend-mode: soft-light;
+  filter: var(--aura-blur-soft) var(--aura-saturate);
+}
+
+/* 5. Light & Dark Modes */
+body[data-theme="light"] {
+  background-color: var(--aura-cream);
+  color: var(--aura-black);
+}
+
+body[data-theme="dark"] {
+  background-color: var(--aura-black);
+  color: var(--aura-white);
+}
+
+/* 6. Glowing Text Effect */
+.glow-text {
+  color: var(--aura-gold);
+  text-shadow:
+    0 0 2px #c9a94e,
+    0 0 6px #f5d0bb,
+    0 0 12px #fce4ec;
+}
+
+/* 7. Velvet Shadows */
+.soft-shadow {
+  box-shadow: var(--aura-shadow-light);
+}
+
+.deep-shadow {
+  box-shadow: var(--aura-shadow-deep);
+}
+
+/* 8. Shimmer Animation */
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+.shimmer {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% auto;
+  animation: shimmer 2.5s linear infinite;
+}
+
+/* 9. Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--aura-cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--aura-gold);
+  border-radius: 10px;
+}
+
+/* 10. Responsive Breakpoints */
+@media (max-width: 1024px) {
+  html {
+    font-size: 15px;
+  }
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  html {
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 1.5rem 1rem;
+  }
+}
