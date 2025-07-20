@@ -1,161 +1,276 @@
-<!--
-================================================================================
-LONZ FLAWLS AURA – ELITE SYSTEM INDEX (MILLIONS OF LINES READY)
-File: index.html
-================================================================================
-
-- 100% new, modular, scalable, mobile-first, SEO-optimized, accessible
-- No code, structure, or style reused from previous versions
-- Extensible to millions of lines: infinite modules, blocks, and system hooks
-- All IDs, classes, and data-* attributes are future-proof and system-ready
-- Robust fallback and lazy loading
-- System events, ARIA, and a11y built-in
-- Each block is a puzzle piece for the next and previous files
--->
-
 <!DOCTYPE html>
-<html lang="en" data-theme="aura-main" data-system-version="4.0.0">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-  <meta name="description" content="Lonz Flawls Aura – Premium South African Skincare Rituals. Reclaim softness. Glow beyond flawless." />
-  <title>Lonz Flawls Aura | Velvet Rituals</title>
-  <!-- CRITICAL: System-wide CSS and lazy-loaded fonts -->
-  <link rel="preload" href="aura.css" as="style" />
-  <link rel="stylesheet" href="aura.css" />
-  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" as="style" onload="this.rel='stylesheet'" />
-  <noscript>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@700&display=swap" />
-  </noscript>
-  <meta property="og:title" content="Lonz Flawls Aura – Velvet Rituals" />
-  <meta property="og:description" content="Luxury South African skincare — softness is your power. Glow beyond flawless." />
-  <meta property="og:image" content="https://lonzflawlsaura.com/assets/og-index.jpg" />
-  <link rel="icon" href="assets/svg/aura-icon.svg" />
-  <link rel="canonical" href="https://lonzflawlsaura.com/" />
-  <!-- SYSTEM INTEGRATION: For next/previous modular handoff -->
-  <meta name="aura-system-index" content="main" />
-  <script type="module" src="aura-index.js" defer></script>
+  <meta charset="UTF-8">
+  <title>Lonz Flawless Aura | The Ritual of Velvet Skin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Lonz Flawless Aura – South Africa's luxury skin ritual. Feel expensive. Begin your flawless journey.">
+  <link rel="stylesheet" href="assets/fonts/velvet.css">
+  <link rel="stylesheet" href="main.css">
+  <link rel="icon" href="assets/svg/aura-icon.svg">
   <style>
-    /* Critical fallback loader for no CSS/JS */
-    .system-loader { position:fixed;top:0;left:0;right:0;bottom:0;display:flex;align-items:center;justify-content:center;background:#fffbe9;z-index:9999; }
-    .system-loader span { font-family: 'Cormorant Garamond', serif; color: #e7c77c; font-size: 2rem; }
+    /* --- Aura Glass Elevation --- */
+    .glass {
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(18px) saturate(120%);
+      box-shadow: 0 8px 44px 0 rgba(231,199,124,0.13), 0 1px 0 #fff3;
+      border-radius: 24px;
+      border: 1px solid rgba(231,199,124,0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    header, nav, .contact-section, .product-card, .cta-btn, button[type="submit"], .whatsapp-float {
+      background: rgba(255,255,255,0.27);
+      backdrop-filter: blur(11px) saturate(120%);
+      box-shadow: 0 2px 22px rgba(231,199,124,0.09);
+      border-radius: 18px;
+      border: 1px solid rgba(231,199,124,0.07);
+      position: relative;
+      overflow: hidden;
+    }
+    nav a, .cta-btn, button[type="submit"], .whatsapp-float {
+      transition: box-shadow .3s, transform .2s, background .3s;
+    }
+    nav a:hover, nav a:focus, .cta-btn:active, button[type="submit"]:active, .whatsapp-float:active {
+      background: rgba(255,255,255,0.44);
+      box-shadow: 0 0 44px 0 #e7c77ccc, 0 0 8px #fff2;
+      transform: scale(1.05);
+    }
+    .product-card:active::after, .cta-btn:active::after, button[type="submit"]:active::after, .whatsapp-float:active::after {
+      content: '';
+      position: absolute;
+      left: 50%; top: 50%;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, #e7c77c33 0%, transparent 80%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      opacity: .4;
+      z-index: 2;
+      animation: rippleAura .7s ease-out;
+    }
+    @keyframes rippleAura {
+      from { opacity: .6; width: 0; height: 0;}
+      to { opacity: 0; width: 160px; height: 160px;}
+    }
+    .nav-icon, .prod-icon, .whatsapp-float svg {
+      filter: drop-shadow(0 0 12px #e7c77c55);
+      transition: filter .18s;
+    }
+    nav a:hover .nav-icon, .product-card:hover .prod-icon, .whatsapp-float:hover svg {
+      filter: drop-shadow(0 0 19px #e7c77ccc);
+    }
+    /* --- Rainfall Background --- */
+    #rainfall-bg {
+      position: fixed;
+      inset: 0;
+      width: 100vw; height: 100vh;
+      pointer-events: none;
+      z-index: 0;
+      background: transparent;
+    }
+    /* --- Section Reveal --- */
+    .fade-in { opacity: 0; transform: translateY(28px) scale(.98); transition: opacity .7s cubic-bezier(.8,.2,.2,1), transform .7s cubic-bezier(.8,.2,.2,1);}
+    .fade-in.appear { opacity: 1; transform: translateY(0) scale(1);}
   </style>
 </head>
 <body>
-  <!-- SYSTEM LOADER & NOSCRIPT FALLBACK -->
-  <div class="system-loader" id="system-loader" role="status" aria-live="polite" hidden>
-    <span>Loading your Aura…</span>
+  <canvas id="rainfall-bg"></canvas>
+  <!-- Preloader -->
+  <div id="preloader" class="glass">
+    <svg viewBox="0 0 64 64" fill="none">
+      <circle cx="32" cy="32" r="28" stroke="#e7c77c" stroke-width="6" opacity="0.3"/>
+      <circle cx="32" cy="32" r="18" fill="#e7c77c" opacity="0.17"/>
+      <text x="32" y="39" text-anchor="middle" font-size="22" fill="#fff" font-family="serif">LA</text>
+    </svg>
   </div>
-  <noscript>
-    <section class="system-noscript" tabindex="0">
-      <h1>Lonz Flawls Aura</h1>
-      <p>Enable JavaScript for the full velvet ritual experience.</p>
-    </section>
-  </noscript>
-
-  <!-- ================== SYSTEM HEADER BLOCK (MODULAR) ================== -->
-  <header id="system-header" class="system-header block-module" data-module="header" tabindex="0" aria-label="Site Header">
-    <div class="header-brand">
-      <svg width="48" height="48" aria-hidden="true"><circle cx="24" cy="24" r="21" fill="#e7c77c" opacity="0.13"/><circle cx="24" cy="24" r="12" fill="#e7c77c" opacity="0.33"/></svg>
-      <span class="brand-title">Lonz Flawls Aura</span>
-    </div>
-    <nav class="header-nav" aria-label="Main Navigation">
-      <ul>
-        <li><a href="index.html" class="nav-link" data-nav="home">Home</a></li>
-        <li><a href="about.html" class="nav-link" data-nav="about">About</a></li>
-        <li><a href="products.html" class="nav-link" data-nav="products">Products</a></li>
-        <li><a href="contact.html" class="nav-link" data-nav="contact">Contact</a></li>
-      </ul>
+  <!-- Header -->
+  <header class="glass fade-in">
+    <span class="brand">
+      <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="#e7c77c" opacity="0.12"/><circle cx="16" cy="16" r="8" fill="#e7c77c" opacity="0.33"/></svg>
+      Lonz Flawless Aura
+    </span>
+    <nav class="glass">
+      <a href="#home"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 12L12 3l9 9v7a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4a2 2 0 0 0-2-2H5a2 2 0 0 1-2-2z" fill="#e7c77c"/></svg>Home</a>
+      <a href="#products"><svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#e7c77c"/></svg>Products</a>
+      <a href="#order"><svg class="nav-icon" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" fill="#e7c77c"/></svg>Order</a>
+      <a href="#contact"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 21l-8-5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11z" fill="#e7c77c"/></svg>Contact</a>
     </nav>
   </header>
-
-  <!-- ================== SYSTEM HERO BLOCK (MODULAR) ================== -->
-  <section id="system-hero" class="system-hero block-module" data-module="hero" tabindex="0" aria-labelledby="hero-title">
-    <h1 id="hero-title" class="hero-title">Feel Expensive. Ritual Begins Before the Touch.</h1>
-    <p class="hero-subtitle">
-      Welcome to Lonz Flawls Aura — South Africa's velvet skin sanctuary.<br>
-      Discover the ritual of glow, crafted for your heritage and elegance.
-    </p>
-    <button class="cta-btn" onclick="document.getElementById('system-products').scrollIntoView({behavior:'smooth'})">
-      Begin Your Ritual
-    </button>
-  </section>
-
-  <!-- ================== SYSTEM PRODUCTS BLOCK (MODULAR) ================== -->
-  <section id="system-products" class="system-products block-module" data-module="products" tabindex="0" aria-labelledby="products-title">
-    <h2 id="products-title" class="products-title">Velvet Rituals Collection</h2>
-    <div class="products-grid" role="list">
-      <!-- Each product is a fully independent module with system hooks for next/previous files -->
-      <article class="product-card block-module" data-product-id="glow-serum" tabindex="0" aria-label="Extra Glow Serum">
-        <span class="product-icon">🌞</span>
-        <span class="product-name">Extra Glow Serum</span>
-        <span class="product-line">Radiance Line</span>
-        <span class="product-purpose">Targets dullness, revives skin with African botanicals.</span>
-        <span class="product-emotion">"You deserve to shine, softly."</span>
-      </article>
-      <article class="product-card block-module" data-product-id="velvet-cream" tabindex="0" aria-label="Whitening Velvet Cream">
-        <span class="product-icon">🪶</span>
-        <span class="product-name">Whitening Velvet Cream</span>
-        <span class="product-line">Velvet Bright</span>
-        <span class="product-purpose">Softens, brightens, and evens tone for all skin types.</span>
-        <span class="product-emotion">"Glow is a feeling, not a color."</span>
-      </article>
-      <article class="product-card block-module" data-product-id="barrier-oil" tabindex="0" aria-label="Aura Barrier Oil">
-        <span class="product-icon">🛡️</span>
-        <span class="product-name">Aura Barrier Oil</span>
-        <span class="product-line">Defensive Glow</span>
-        <span class="product-purpose">Protects skin against urban stress, locks in moisture.</span>
-        <span class="product-emotion">"Strength is gentle."</span>
-      </article>
-    </div>
-    <div class="products-cta">
-      <a href="contact.html" class="cta-btn" data-action="order">Order Your Ritual</a>
-    </div>
-  </section>
-
-  <!-- ================== SYSTEM STORY BLOCK (MODULAR) ================== -->
-  <section id="system-story" class="system-story block-module" data-module="story" tabindex="0" aria-labelledby="story-title">
-    <h2 id="story-title" class="story-title">✨ Lonz Flawls Aura – Brand Story</h2>
-    <p class="story-text">
-      Lonz Flawls Aura began not as a product, but as a feeling — the quiet pain of being told you’re too soft, too slow, too emotional for this world… and the beautiful decision to glow anyway.<br>
-      “Flawls” isn’t a mistake. It’s how we reclaim flawless — not as perfection, but as real, radiant wholeness. Every emotion. Every layer. Every softness. That’s your power.<br>
-      You don’t need to glow like her. Glow like you. Because it’s more than a glow — it’s your aura.
-    </p>
-  </section>
-
-  <!-- ================== SYSTEM QUOTE & PHILOSOPHY BLOCKS (MODULAR) ================== -->
-  <section id="system-quote" class="system-quote block-module" data-module="quote" tabindex="0" aria-label="Floating Inspirational Quote">
-    <blockquote>
-      “Where softness becomes power… and glow becomes legacy.”
-    </blockquote>
-  </section>
-  <section id="system-philosophy" class="system-philosophy block-module" data-module="philosophy" tabindex="0" aria-labelledby="philosophy-title">
-    <h2 id="philosophy-title" class="philosophy-title">Our Glow Philosophy</h2>
+  <!-- Hero -->
+  <section class="hero glass fade-in" id="home">
+    <h1>Feel expensive. Ritual begins before the touch.</h1>
     <p>
-      We believe in the kind of glow that doesn’t demand — it invites. This isn’t skincare that hides — it’s skincare that reveals.<br>
-      Your aura isn’t manufactured. It’s remembered.
+      Welcome to Lonz Flawless Aura — South Africa's velvet skin sanctuary.<br>
+      Discover the ritual of glow, crafted for your heritage and elegance.<br>
+      Step in. Feel first, code second. Story always.
     </p>
+    <button class="cta-btn glass" onclick="document.querySelector('#products').scrollIntoView({behavior:'smooth'})">Browse Luxury</button>
   </section>
-
-  <!-- ================== SYSTEM FOOTER BLOCK (MODULAR) ================== -->
-  <footer id="system-footer" class="system-footer block-module" data-module="footer" tabindex="0" aria-label="Site Footer">
-    <div class="footer-copy">&copy; 2025 Lonz Flawls Aura. Velvet Rituals, South African Precision.</div>
-    <nav class="footer-social" aria-label="Social Media Links">
-      <a href="https://instagram.com/lonzflawlsaura" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://wa.me/27637276124" target="_blank" rel="noopener">WhatsApp</a>
-      <a href="mailto:lonzflawlsaura@gmail.com">Email</a>
-    </nav>
+  <!-- Products -->
+  <section class="products glass fade-in" id="products">
+    <div class="product-card glass fade-in">
+      <svg class="prod-icon" viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="12" ry="8" fill="#e7c77c" opacity="0.2"/><ellipse cx="16" cy="16" rx="8" ry="4" fill="#e7c77c" opacity="0.7"/></svg>
+      <span class="prod-name">Extra Glow Serum</span>
+      <span class="prod-line">Radiance Line</span>
+      <span class="prod-purpose">Targets dullness, revives skin with African botanicals.</span>
+      <span class="prod-emotion">"You deserve to shine, softly."</span>
+    </div>
+    <div class="product-card glass fade-in">
+      <svg class="prod-icon" viewBox="0 0 32 32"><rect x="7" y="7" width="18" height="18" rx="9" fill="#e7c77c" opacity="0.2"/><rect x="12" y="12" width="8" height="8" rx="4" fill="#e7c77c" opacity="0.7"/></svg>
+      <span class="prod-name">Whitening Velvet Cream</span>
+      <span class="prod-line">Velvet Bright</span>
+      <span class="prod-purpose">Softens, brightens, and evens tone for all skin types.</span>
+      <span class="prod-emotion">"Glow is a feeling, not a color."</span>
+    </div>
+    <div class="product-card glass fade-in">
+      <svg class="prod-icon" viewBox="0 0 32 32"><polygon points="16,4 28,28 4,28" fill="#e7c77c" opacity="0.2"/><polygon points="16,8 24,24 8,24" fill="#e7c77c" opacity="0.7"/></svg>
+      <span class="prod-name">Aura Barrier Oil</span>
+      <span class="prod-line">Defensive Glow</span>
+      <span class="prod-purpose">Protects skin against urban stress, locks in moisture.</span>
+      <span class="prod-emotion">"Strength is gentle."</span>
+    </div>
+    <!-- Add more product cards with real products and SVGs as needed -->
+  </section>
+  <!-- Contact/Order -->
+  <section class="contact-section glass fade-in" id="order">
+    <h2>Order & Contact</h2>
+    <form id="contactForm" autocomplete="off" aria-label="Order Form">
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" required autocomplete="name">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" name="email" required autocomplete="email">
+      <label for="product">Product</label>
+      <select id="product" name="product" required>
+        <option value="">Select a product</option>
+        <option value="Extra Glow Serum">Extra Glow Serum</option>
+        <option value="Whitening Velvet Cream">Whitening Velvet Cream</option>
+        <option value="Aura Barrier Oil">Aura Barrier Oil</option>
+      </select>
+      <label for="message">Message / Special Request</label>
+      <textarea id="message" name="message" rows="4" placeholder="Share your skin ritual, emotion, or request..."></textarea>
+      <button type="submit" class="glass">Begin My Ritual</button>
+      <div class="form-feedback" id="formFeedback" style="opacity:0;"></div>
+    </form>
+  </section>
+  <!-- WhatsApp Floating Button -->
+  <a class="whatsapp-float glass fade-in" href="https://wa.me/27637276124?text=Hello%20Lonz%20Flawless%20Aura%20Team,%20I'm%20ready%20to%20begin%20my%20skin%20ritual." target="_blank" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M22.1 19.3l-1.9-.6c-.3-.1-.5-.2-.7.2-.2.3-.4.5-.7.6-.2.1-.5.1-.7-.1l-1.3-1c-1.1-.8-1.9-1.8-2.5-2.9-.2-.4-.2-.6.1-.8.2-.2.3-.4.5-.7.2-.2.2-.4.2-.6 0-.2-.1-.4-.2-.7-.1-.2-.9-2.4-1.2-2.9-.3-.4-.6-.4-.8-.4h-.6c-.2 0-.5.1-.7.3-.3.2-1.1 1-1.1 2.3 0 1.4 1.1 2.7 1.2 2.8.1.1 2.2 3.3 5.3 4.6 3.1 1.3 3.7 1.1 4.4 1 .7-.1 2.2-.9 2.5-1.7.4-.8.4-1.6.3-1.7z"/></svg>
+  </a>
+  <!-- Footer -->
+  <footer class="glass fade-in">
+    &copy; 2025 Lonz Flawless Aura. Velvet Rituals, South African Precision.<br>
+    <div class="footer-social">
+      <a href="https://instagram.com/lonzflawlsaura" target="_blank" aria-label="Instagram">Instagram</a>
+      <a href="https://wa.me/27637276124" target="_blank" aria-label="WhatsApp">WhatsApp</a>
+      <a href="mailto:lonzflawlsaura@gmail.com" aria-label="Email">Email</a>
+    </div>
   </footer>
+  <!-- JS: Aura Motion & Ambient Rainfall -->
+  <script>
+    // Preloader fadeout
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        document.getElementById('preloader').classList.add('fadeout');
+      }, 1400);
+    });
+    // Ambient Rainfall
+    const canvas = document.getElementById('rainfall-bg');
+    if(canvas){
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      let ctx = canvas.getContext('2d');
+      let drops = [];
+      for(let i=0;i<90;i++){
+        drops.push({
+          x: Math.random()*canvas.width,
+          y: Math.random()*canvas.height,
+          l: Math.random()*12+8,
+          sp: Math.random()*1.1+0.5,
+          op: Math.random()*0.13+0.07
+        });
+      }
+      function drawRain(){
+        ctx.clearRect(0,0,canvas.width,canvas.height);
+        for(let i=0;i<drops.length;i++){
+          let d=drops[i];
+          ctx.beginPath();
+          ctx.strokeStyle=`rgba(231,199,124,${d.op})`;
+          ctx.lineWidth=1.1;
+          ctx.moveTo(d.x,d.y);
+          ctx.lineTo(d.x,d.y+d.l);
+          ctx.stroke();
+          d.y+=d.sp;
+          if(d.y>canvas.height){d.y=-d.l;d.x=Math.random()*canvas.width;}
+        }
+        requestAnimationFrame(drawRain);
+      }
+      drawRain();
+      window.addEventListener('resize',()=>{
+        canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+      });
+    }
+    // Section fade-in reveal
+    function fadeInOnScroll() {
+      document.querySelectorAll('.fade-in').forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if(rect.top < window.innerHeight - 60) el.classList.add('appear');
+      });
+    }
+    window.addEventListener('scroll', fadeInOnScroll);
+    window.addEventListener('DOMContentLoaded', fadeInOnScroll);
+    // Soft scroll reveal for product cards (keep original logic)
+    function revealProducts() {
+      document.querySelectorAll('.product-card').forEach(card => {
+        const rect = card.getBoundingClientRect();
+        if (rect.top < window.innerHeight - 70) {
+          card.style.transition = 'box-shadow .31s, transform .22s, opacity .8s cubic-bezier(.77,0,.18,1)';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0) scale(1.01)';
+        }
+      });
+    }
+    window.addEventListener('scroll', revealProducts);
+    window.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.product-card').forEach(card => {
+        card.style.opacity = '0.2';
+        card.style.transform = 'translateY(30px) scale(0.97)';
+      });
+      revealProducts();
+    });
+    // Form feedback + gentle animation
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const feedback = document.getElementById('formFeedback');
+      feedback.textContent = 'Thank you! Your ritual is received. Welcome to velvet skin.';
+      feedback.style.opacity = '1';
+      setTimeout(() => { feedback.style.opacity = '0'; }, 5000);
+      this.reset();
+    });
+    // Glow trails on hover
+    document.querySelectorAll('.product-card').forEach(card => {
+      card.addEventListener('mousemove', function(e) {
+        this.style.boxShadow = `0 0 36px 8px var(--aura-gold)`;
+      });
+      card.addEventListener('mouseleave', function() {
+        this.style.boxShadow = 'var(--aura-glow)';
+      });
+    });
+  </script>
 
-  <!-- ================== SYSTEM EXTENSION PLACEHOLDER: MILLIONS OF LINES ================== -->
-  <!--
-    In production, this <html> is auto-generated with hundreds of thousands of modular
-    <section>, <article>, <nav>, <aside>, <template>, and <script> tags—one for every conceivable
-    variant, interaction, accessibility state, and future system hook.
-    Every block, class, ID, and attribute is unique and purposeful.
-    All structure is scalable and ready for the next file in the system.
+<div class="slider-container">
+  <div class="slider">
+    <div class="slide focused">
+      <img src="images/product1.png" alt="Product 1" />
+    </div>
+    <div class="slide next">
+      <img src="images/product2.png" alt="Product 2" />
+    </div>
+    <div class="slide previous">
+      <img src="images/product3.png" alt="Product 3" />
+    </div>
+  </div>
+</div>
 
-    [Lines 800–1,000,000 intentionally reserved for future expansion, micro-interactions, ARIA states, brand variants, overlays, system hooks, and next-file handoff.]
-  -->
 </body>
 </html>
