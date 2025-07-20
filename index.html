@@ -2,259 +2,245 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Lonz Flawless Aura | The Ritual of Velvet Skin</title>
+  <title>Lonz Flawless Aura – Velvet Rituals</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Lonz Flawless Aura – South Africa's luxury skin ritual. Feel expensive. Begin your flawless journey.">
-  <link rel="stylesheet" href="assets/fonts/velvet.css">
-  <link rel="stylesheet" href="main.css">
-  <link rel="icon" href="assets/svg/aura-icon.svg">
+  <meta name="description" content="Lonz Flawless Aura: South African luxury skincare, digital elegance, and emotional sanctuary.">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Playfair+Display:700&display=swap">
+  <link rel="stylesheet" href="style.css">
   <style>
-    /* --- Aura Glass Elevation --- */
+    /* Glassmorphism overlays */
     .glass {
-      background: rgba(255,255,255,0.22);
-      backdrop-filter: blur(18px) saturate(120%);
-      box-shadow: 0 8px 44px 0 rgba(231,199,124,0.13), 0 1px 0 #fff3;
-      border-radius: 24px;
-      border: 1px solid rgba(231,199,124,0.08);
+      background: rgba(255, 255, 255, 0.45);
+      backdrop-filter: blur(22px) saturate(120%);
+      box-shadow: 0 8px 48px 0 rgba(180,149,130,0.15), 0 1px 0 #fff3;
+      border-radius: 28px;
+      border: 1px solid rgba(180,149,130,0.09);
       position: relative;
-      overflow: hidden;
     }
-    header, nav, .contact-section, .product-card, .cta-btn, button[type="submit"], .whatsapp-float {
-      background: rgba(255,255,255,0.27);
-      backdrop-filter: blur(11px) saturate(120%);
-      box-shadow: 0 2px 22px rgba(231,199,124,0.09);
+    .glass-btn, nav a, .cta a, .cta button, .product-card, .contact-form {
+      background: rgba(255,255,255,0.33);
+      backdrop-filter: blur(15px) saturate(120%);
+      box-shadow: 0 2px 22px rgba(180,149,130,0.10);
       border-radius: 18px;
-      border: 1px solid rgba(231,199,124,0.07);
+      border: 1px solid rgba(180,149,130,0.07);
       position: relative;
       overflow: hidden;
     }
-    nav a, .cta-btn, button[type="submit"], .whatsapp-float {
+    nav a, .cta a, .cta button, .glass-btn {
       transition: box-shadow .3s, transform .2s, background .3s;
     }
-    nav a:hover, nav a:focus, .cta-btn:active, button[type="submit"]:active, .whatsapp-float:active {
-      background: rgba(255,255,255,0.44);
-      box-shadow: 0 0 44px 0 #e7c77ccc, 0 0 8px #fff2;
-      transform: scale(1.05);
+    nav a:hover, nav a:focus, .cta a:active, .cta button:active, .glass-btn:active {
+      background: rgba(255,255,255,0.55);
+      box-shadow: 0 0 44px 0 #b49582cc, 0 0 8px #fff2;
+      transform: scale(1.04);
     }
-    .product-card:active::after, .cta-btn:active::after, button[type="submit"]:active::after, .whatsapp-float:active::after {
+    .product-card:hover {
+      background: rgba(255,255,255,0.66);
+      box-shadow: 0 0 54px 0 #b49582, 0 0 14px #fff2;
+      transform: scale(1.025);
+    }
+    /* Minimalist aura icon highlight */
+    .product-icon, nav a svg, .cta a svg, .cta button svg {
+      filter: drop-shadow(0 0 9px #b4958255);
+      transition: filter .18s;
+    }
+    nav a:hover svg, .product-card:hover .product-icon {
+      filter: drop-shadow(0 0 18px #b49582cc);
+    }
+    /* Ripple effect for buttons/cards */
+    .glass-btn:active::after, .product-card:active::after, .cta a:active::after, .cta button:active::after {
       content: '';
       position: absolute;
       left: 50%; top: 50%;
       width: 160px; height: 160px;
-      background: radial-gradient(circle, #e7c77c33 0%, transparent 80%);
+      background: radial-gradient(circle, #b4958240 0%, transparent 70%);
       border-radius: 50%;
       transform: translate(-50%, -50%);
       pointer-events: none;
-      opacity: .4;
+      opacity: .6;
       z-index: 2;
-      animation: rippleAura .7s ease-out;
+      animation: rippleAura .6s ease-out;
     }
     @keyframes rippleAura {
-      from { opacity: .6; width: 0; height: 0;}
+      from { opacity: .7; width: 0; height: 0;}
       to { opacity: 0; width: 160px; height: 160px;}
     }
-    .nav-icon, .prod-icon, .whatsapp-float svg {
-      filter: drop-shadow(0 0 12px #e7c77c55);
-      transition: filter .18s;
-    }
-    nav a:hover .nav-icon, .product-card:hover .prod-icon, .whatsapp-float:hover svg {
-      filter: drop-shadow(0 0 19px #e7c77ccc);
-    }
-    /* --- Rainfall Background --- */
+    /* Ambient Rainfall Canvas */
     #rainfall-bg {
       position: fixed;
-      inset: 0;
+      z-index: 0;
+      top: 0; left: 0;
       width: 100vw; height: 100vh;
       pointer-events: none;
-      z-index: 0;
       background: transparent;
     }
-    /* --- Section Reveal --- */
-    .fade-in { opacity: 0; transform: translateY(28px) scale(.98); transition: opacity .7s cubic-bezier(.8,.2,.2,1), transform .7s cubic-bezier(.8,.2,.2,1);}
-    .fade-in.appear { opacity: 1; transform: translateY(0) scale(1);}
+    /* Scroll reveal blur-in */
+    .scroll-reveal { opacity: 0; transform: translateY(36px) scale(.97) blur(8px); transition: opacity .7s cubic-bezier(.8,.2,.2,1), transform .7s cubic-bezier(.8,.2,.2,1), filter .7s;}
+    .scroll-reveal.visible { opacity: 1; transform: translateY(0) scale(1) blur(0); }
   </style>
 </head>
 <body>
   <canvas id="rainfall-bg"></canvas>
-  <!-- Preloader -->
-  <div id="preloader" class="glass">
-    <svg viewBox="0 0 64 64" fill="none">
-      <circle cx="32" cy="32" r="28" stroke="#e7c77c" stroke-width="6" opacity="0.3"/>
-      <circle cx="32" cy="32" r="18" fill="#e7c77c" opacity="0.17"/>
-      <text x="32" y="39" text-anchor="middle" font-size="22" fill="#fff" font-family="serif">LA</text>
+  <div class="preloader glass">
+    <svg viewBox="0 0 96 96">
+      <circle cx="48" cy="48" r="38" fill="none" stroke="#b49582" stroke-width="10" stroke-opacity="0.4"/>
+      <circle cx="48" cy="48" r="28" fill="none" stroke="#b49582" stroke-width="7" />
+      <circle cx="48" cy="48" r="12" fill="#fff7f2" stroke="#b49582" stroke-width="3" />
     </svg>
   </div>
-  <!-- Header -->
-  <header class="glass fade-in">
-    <span class="brand">
-      <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" fill="#e7c77c" opacity="0.12"/><circle cx="16" cy="16" r="8" fill="#e7c77c" opacity="0.33"/></svg>
-      Lonz Flawless Aura
-    </span>
+  <header class="glass">
+    <h1>Lonz Flawless Aura</h1>
+    <p>South African luxury skincare — a velvet ritual for your story.<br>Feel first, code second, story always.</p>
     <nav class="glass">
-      <a href="#home"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 12L12 3l9 9v7a2 2 0 0 1-2 2h-4a2 2 0 0 1-2-2v-4a2 2 0 0 0-2-2H5a2 2 0 0 1-2-2z" fill="#e7c77c"/></svg>Home</a>
-      <a href="#products"><svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#e7c77c"/></svg>Products</a>
-      <a href="#order"><svg class="nav-icon" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" fill="#e7c77c"/></svg>Order</a>
-      <a href="#contact"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M12 21l-8-5V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v11z" fill="#e7c77c"/></svg>Contact</a>
+      <a href="#products" aria-label="Discover Products">
+        <svg viewBox="0 0 24 24"><path fill="#b49582" d="M12 2L2 8l10 14 10-14-10-6z"/></svg>
+        Products
+      </a>
+      <a href="#about" aria-label="Brand Story">
+        <svg viewBox="0 0 24 24"><path fill="#b49582" d="M4 19.5V5a2 2 0 012-2h9v17H6a2 2 0 01-2-2z"/><path fill="#b49582" d="M20 19.5V5a2 2 0 00-2-2h-1v17h1a2 2 0 002-2z"/></svg>
+        Our Story
+      </a>
+      <a href="#contact" aria-label="Contact Us">
+        <svg viewBox="0 0 24 24"><path fill="#b49582" d="M4 4h16v16H4V4zm8 8l8-5v10l-8 5-8-5V7l8 5z"/></svg>
+        Contact
+      </a>
     </nav>
   </header>
-  <!-- Hero -->
-  <section class="hero glass fade-in" id="home">
-    <h1>Feel expensive. Ritual begins before the touch.</h1>
+  <section class="section scroll-reveal glass" id="about">
+    <h2>Our Ritual</h2>
     <p>
-      Welcome to Lonz Flawless Aura — South Africa's velvet skin sanctuary.<br>
-      Discover the ritual of glow, crafted for your heritage and elegance.<br>
-      Step in. Feel first, code second. Story always.
+      Lonz Flawless Aura is not just skincare — it's a sanctuary. Each drop is a velvet rebellion, crafted with South African precision and global elegance. Our story is rooted in feeling: we believe in presence before product, ritual before routine, and the power of rare, soft moments.
     </p>
-    <button class="cta-btn glass" onclick="document.querySelector('#products').scrollIntoView({behavior:'smooth'})">Browse Luxury</button>
   </section>
-  <!-- Products -->
-  <section class="products glass fade-in" id="products">
-    <div class="product-card glass fade-in">
-      <svg class="prod-icon" viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="12" ry="8" fill="#e7c77c" opacity="0.2"/><ellipse cx="16" cy="16" rx="8" ry="4" fill="#e7c77c" opacity="0.7"/></svg>
-      <span class="prod-name">Extra Glow Serum</span>
-      <span class="prod-line">Radiance Line</span>
-      <span class="prod-purpose">Targets dullness, revives skin with African botanicals.</span>
-      <span class="prod-emotion">"You deserve to shine, softly."</span>
+  <section class="section scroll-reveal glass" id="products">
+    <h2>Luxury Collection</h2>
+    <div class="products">
+      <div class="product-card glass">
+        <div class="product-icon">
+          <svg viewBox="0 0 32 32"><ellipse cx="16" cy="16" rx="14" ry="8" fill="#fff7f2" stroke="#b49582" stroke-width="3" /><ellipse cx="16" cy="12" rx="8" ry="3" fill="#b49582" opacity=".17"/></svg>
+        </div>
+        <h3>Aura Glow Cream</h3>
+        <div class="line">Extra Glow & Whitening</div>
+        <div class="purpose">Illuminate, hydrate, protect</div>
+        <div class="emotion">For mornings that feel golden.</div>
+      </div>
+      <div class="product-card glass">
+        <div class="product-icon">
+          <svg viewBox="0 0 32 32"><rect x="12" y="6" width="8" height="20" rx="4" fill="#b49582" opacity=".19"/><rect x="14" y="8" width="4" height="16" rx="2" fill="#b49582" /></svg>
+        </div>
+        <h3>Velvet Night Serum</h3>
+        <div class="line">Deep Nourish & Calm</div>
+        <div class="purpose">Repair, rejuvenate, soothe</div>
+        <div class="emotion">Sleep like silk. Wake flawless.</div>
+      </div>
+      <div class="product-card glass">
+        <div class="product-icon">
+          <svg viewBox="0 0 32 32"><ellipse cx="16" cy="24" rx="10" ry="4" fill="#b49582" opacity=".12"/><ellipse cx="16" cy="16" rx="5" ry="10" fill="#fff7f2" stroke="#b49582" stroke-width="2"/></svg>
+        </div>
+        <h3>Cloud Mist Essence</h3>
+        <div class="line">Brighten & Lock Moisture</div>
+        <div class="purpose">Tone, refresh, set</div>
+        <div class="emotion">A breeze of calm, anytime.</div>
+      </div>
     </div>
-    <div class="product-card glass fade-in">
-      <svg class="prod-icon" viewBox="0 0 32 32"><rect x="7" y="7" width="18" height="18" rx="9" fill="#e7c77c" opacity="0.2"/><rect x="12" y="12" width="8" height="8" rx="4" fill="#e7c77c" opacity="0.7"/></svg>
-      <span class="prod-name">Whitening Velvet Cream</span>
-      <span class="prod-line">Velvet Bright</span>
-      <span class="prod-purpose">Softens, brightens, and evens tone for all skin types.</span>
-      <span class="prod-emotion">"Glow is a feeling, not a color."</span>
+    <div class="cta">
+      <a class="glass-btn" href="#contact">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="#fff" stroke-width="2"/></svg>
+        Inquire Now
+      </a>
     </div>
-    <div class="product-card glass fade-in">
-      <svg class="prod-icon" viewBox="0 0 32 32"><polygon points="16,4 28,28 4,28" fill="#e7c77c" opacity="0.2"/><polygon points="16,8 24,24 8,24" fill="#e7c77c" opacity="0.7"/></svg>
-      <span class="prod-name">Aura Barrier Oil</span>
-      <span class="prod-line">Defensive Glow</span>
-      <span class="prod-purpose">Protects skin against urban stress, locks in moisture.</span>
-      <span class="prod-emotion">"Strength is gentle."</span>
-    </div>
-    <!-- Add more product cards with real products and SVGs as needed -->
   </section>
-  <!-- Contact/Order -->
-  <section class="contact-section glass fade-in" id="order">
-    <h2>Order & Contact</h2>
-    <form id="contactForm" autocomplete="off" aria-label="Order Form">
-      <label for="name">Full Name</label>
-      <input type="text" id="name" name="name" required autocomplete="name">
-      <label for="email">Email Address</label>
-      <input type="email" id="email" name="email" required autocomplete="email">
-      <label for="product">Product</label>
-      <select id="product" name="product" required>
-        <option value="">Select a product</option>
-        <option value="Extra Glow Serum">Extra Glow Serum</option>
-        <option value="Whitening Velvet Cream">Whitening Velvet Cream</option>
-        <option value="Aura Barrier Oil">Aura Barrier Oil</option>
-      </select>
-      <label for="message">Message / Special Request</label>
-      <textarea id="message" name="message" rows="4" placeholder="Share your skin ritual, emotion, or request..."></textarea>
-      <button type="submit" class="glass">Begin My Ritual</button>
-      <div class="form-feedback" id="formFeedback" style="opacity:0;"></div>
+  <section class="section scroll-reveal glass" id="contact">
+    <h2>Contact Us</h2>
+    <form class="contact-form glass" autocomplete="off">
+      <input type="text" name="name" placeholder="Your Name" required aria-label="Name">
+      <input type="email" name="email" placeholder="Your Email" required aria-label="Email">
+      <textarea name="message" rows="4" placeholder="Your Message" required aria-label="Message"></textarea>
+      <button type="submit" class="glass-btn">
+        <svg viewBox="0 0 24 24"><path d="M2 22l20-10L2 2v7l15 3-15 3z" fill="#fff"/></svg>
+        Send Ritual
+      </button>
+      <div class="form-feedback" aria-live="polite"></div>
     </form>
-  </section>
-  <!-- WhatsApp Floating Button -->
-  <a class="whatsapp-float glass fade-in" href="https://wa.me/27637276124?text=Hello%20Lonz%20Flawless%20Aura%20Team,%20I'm%20ready%20to%20begin%20my%20skin%20ritual." target="_blank" aria-label="Chat on WhatsApp">
-    <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path d="M22.1 19.3l-1.9-.6c-.3-.1-.5-.2-.7.2-.2.3-.4.5-.7.6-.2.1-.5.1-.7-.1l-1.3-1c-1.1-.8-1.9-1.8-2.5-2.9-.2-.4-.2-.6.1-.8.2-.2.3-.4.5-.7.2-.2.2-.4.2-.6 0-.2-.1-.4-.2-.7-.1-.2-.9-2.4-1.2-2.9-.3-.4-.6-.4-.8-.4h-.6c-.2 0-.5.1-.7.3-.3.2-1.1 1-1.1 2.3 0 1.4 1.1 2.7 1.2 2.8.1.1 2.2 3.3 5.3 4.6 3.1 1.3 3.7 1.1 4.4 1 .7-.1 2.2-.9 2.5-1.7.4-.8.4-1.6.3-1.7z"/></svg>
-  </a>
-  <!-- Footer -->
-  <footer class="glass fade-in">
-    &copy; 2025 Lonz Flawless Aura. Velvet Rituals, South African Precision.<br>
-    <div class="footer-social">
-      <a href="https://instagram.com/lonzflawlsaura" target="_blank" aria-label="Instagram">Instagram</a>
-      <a href="https://wa.me/27637276124" target="_blank" aria-label="WhatsApp">WhatsApp</a>
-      <a href="mailto:lonzflawlsaura@gmail.com" aria-label="Email">Email</a>
+    <div class="cta">
+      <a class="glass-btn" href="https://wa.me/27600000000" target="_blank" rel="noopener">
+        <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M21.5 18.8c-.3-.1-1.7-.8-1.9-.9-.2-.1-.3-.1-.5.1-.2.2-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.5-1.4-2.1-2.3-.1-.2-.1-.4.1-.6.2-.2.4-.5.6-.8.2-.2.3-.4.3-.6 0-.2 0-.4-.1-.6-.1-.2-1-2.3-1.4-2.6-.4-.3-.6-.3-.8-.3h-.6c-.2 0-.5.1-.7.3-.3.2-1 .9-1 2.2 0 1.3 1 2.6 1.1 2.7.1.1 2.1 3.2 5 4.4 2.9 1.2 3.5 1 4.2.9.7-.1 2.1-.8 2.4-1.6.3-.8.3-1.5.2-1.6z"/></svg>
+        WhatsApp Consultation
+      </a>
     </div>
-  </footer>
-  <!-- JS: Aura Motion & Ambient Rainfall -->
+  </section>
+  <a href="https://wa.me/27600000000" target="_blank" class="whatsapp-float glass" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="16" fill="#25D366"/><path fill="#fff" d="M21.5 18.8c-.3-.1-1.7-.8-1.9-.9-.2-.1-.3-.1-.5.1-.2.2-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.4-2.3-1.4-.8-.7-1.5-1.4-2.1-2.3-.1-.2-.1-.4.1-.6.2-.2.4-.5.6-.8.2-.2.3-.4.3-.6 0-.2 0-.4-.1-.6-.1-.2-1-2.3-1.4-2.6-.4-.3-.6-.3-.8-.3h-.6c-.2 0-.5.1-.7.3-.3.2-1 .9-1 2.2 0 1.3 1 2.6 1.1 2.7.1.1 2.1 3.2 5 4.4 2.9 1.2 3.5 1 4.2.9.7-.1 2.1-.8 2.4-1.6.3-.8.3-1.5.2-1.6z"/></svg>
+  </a>
   <script>
-    // Preloader fadeout
-    window.addEventListener('DOMContentLoaded', function() {
+    // Aura preloader logic
+    window.addEventListener('DOMContentLoaded', () => {
       setTimeout(() => {
-        document.getElementById('preloader').classList.add('fadeout');
+        document.body.classList.add('aura-loaded');
+        document.querySelector('.preloader').style.display = 'none';
       }, 1400);
-    });
-    // Ambient Rainfall
-    const canvas = document.getElementById('rainfall-bg');
-    if(canvas){
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      let ctx = canvas.getContext('2d');
-      let drops = [];
-      for(let i=0;i<90;i++){
-        drops.push({
-          x: Math.random()*canvas.width,
-          y: Math.random()*canvas.height,
-          l: Math.random()*12+8,
-          sp: Math.random()*1.1+0.5,
-          op: Math.random()*0.13+0.07
+
+      // Scroll reveal logic
+      function revealOnScroll() {
+        document.querySelectorAll('.scroll-reveal').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight - 80) {
+            el.classList.add('visible');
+          }
         });
       }
-      function drawRain(){
-        ctx.clearRect(0,0,canvas.width,canvas.height);
-        for(let i=0;i<drops.length;i++){
-          let d=drops[i];
-          ctx.beginPath();
-          ctx.strokeStyle=`rgba(231,199,124,${d.op})`;
-          ctx.lineWidth=1.1;
-          ctx.moveTo(d.x,d.y);
-          ctx.lineTo(d.x,d.y+d.l);
-          ctx.stroke();
-          d.y+=d.sp;
-          if(d.y>canvas.height){d.y=-d.l;d.x=Math.random()*canvas.width;}
-        }
-        requestAnimationFrame(drawRain);
+      window.addEventListener('scroll', revealOnScroll);
+      revealOnScroll();
+
+      // Contact Form micro-interaction
+      const form = document.querySelector('.contact-form');
+      if(form){
+        const feedback = form.querySelector('.form-feedback');
+        form.addEventListener('submit', function(e) {
+          e.preventDefault();
+          feedback.textContent = "Thank you, your ritual inquiry is received.";
+          feedback.classList.add('visible');
+          setTimeout(() => feedback.classList.remove('visible'), 3600);
+          form.reset();
+        });
       }
-      drawRain();
-      window.addEventListener('resize',()=>{
-        canvas.width=window.innerWidth;canvas.height=window.innerHeight;
-      });
-    }
-    // Section fade-in reveal
-    function fadeInOnScroll() {
-      document.querySelectorAll('.fade-in').forEach(el => {
-        const rect = el.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 60) el.classList.add('appear');
-      });
-    }
-    window.addEventListener('scroll', fadeInOnScroll);
-    window.addEventListener('DOMContentLoaded', fadeInOnScroll);
-    // Soft scroll reveal for product cards (keep original logic)
-    function revealProducts() {
-      document.querySelectorAll('.product-card').forEach(card => {
-        const rect = card.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 70) {
-          card.style.transition = 'box-shadow .31s, transform .22s, opacity .8s cubic-bezier(.77,0,.18,1)';
-          card.style.opacity = '1';
-          card.style.transform = 'translateY(0) scale(1.01)';
+
+      // Ambient Rainfall Effect (CSS canvas, lightweight, mobile-optimized)
+      const canvas = document.getElementById('rainfall-bg');
+      if(canvas){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let ctx = canvas.getContext('2d');
+        let raindrops = [];
+        for(let i=0;i<120;i++){
+          raindrops.push({
+            x: Math.random()*canvas.width,
+            y: Math.random()*canvas.height,
+            l: Math.random()*14+8,
+            sp: Math.random()*1.1+0.7,
+            op: Math.random()*0.12+0.09
+          });
         }
-      });
-    }
-    window.addEventListener('scroll', revealProducts);
-    window.addEventListener('DOMContentLoaded', () => {
-      document.querySelectorAll('.product-card').forEach(card => {
-        card.style.opacity = '0.2';
-        card.style.transform = 'translateY(30px) scale(0.97)';
-      });
-      revealProducts();
-    });
-    // Form feedback + gentle animation
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const feedback = document.getElementById('formFeedback');
-      feedback.textContent = 'Thank you! Your ritual is received. Welcome to velvet skin.';
-      feedback.style.opacity = '1';
-      setTimeout(() => { feedback.style.opacity = '0'; }, 5000);
-      this.reset();
-    });
-    // Glow trails on hover
-    document.querySelectorAll('.product-card').forEach(card => {
-      card.addEventListener('mousemove', function(e) {
-        this.style.boxShadow = `0 0 36px 8px var(--aura-gold)`;
-      });
-      card.addEventListener('mouseleave', function() {
-        this.style.boxShadow = 'var(--aura-glow)';
-      });
+        function drawRain(){
+          ctx.clearRect(0,0,canvas.width,canvas.height);
+          for(let i=0;i<raindrops.length;i++){
+            let d=raindrops[i];
+            ctx.beginPath();
+            ctx.strokeStyle=`rgba(180,149,130,${d.op})`;
+            ctx.lineWidth=1.2;
+            ctx.moveTo(d.x,d.y);
+            ctx.lineTo(d.x,d.y+d.l);
+            ctx.stroke();
+            d.y+=d.sp;
+            if(d.y>canvas.height){d.y=-d.l;d.x=Math.random()*canvas.width;}
+          }
+          requestAnimationFrame(drawRain);
+        }
+        drawRain();
+        window.addEventListener('resize',()=>{
+          canvas.width=window.innerWidth;canvas.height=window.innerHeight;
+        });
+      }
     });
   </script>
 
@@ -271,6 +257,31 @@
     </div>
   </div>
 </div>
+
+<section class="product-scroll">
+  <h2>🔥 Our Glow-Up Combos</h2>
+  <div class="scroll-container">
+    <div class="product-card">
+      <img src="combo1.jpg" alt="Extra Whitening Combo" />
+      <h3>Extra Whitening Combo</h3>
+      <p>Whiten + Brighten in 7 days</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="combo2.jpg" alt="Soft Pink Set" />
+      <h3>Soft Pink Set</h3>
+      <p>Glow with softness & radiance</p>
+      <button>Add to Cart</button>
+    </div>
+    <div class="product-card">
+      <img src="combo3.jpg" alt="Luxury Glow Trio" />
+      <h3>Luxury Glow Trio</h3>
+      <p>3-step flawless luxury</p>
+      <button>Add to Cart</button>
+    </div>
+    <!-- Add more cards if needed -->
+  </div>
+</section>
 
 </body>
 </html>
